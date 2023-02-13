@@ -13,22 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TestingSystem
+namespace TestingSystem.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для SelectActions.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SelectActions : Page
     {
-        public MainWindow()
+        public SelectActions()
         {
             InitializeComponent();
-            App.windowClass.Window = this;
         }
 
-        public void NextPage(Page page)
+        private void OpenAllTests_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(page);
+            App.windowClass.Window.NextPage(new Pages.Students.AllTestsPage());
         }
     }
 }
