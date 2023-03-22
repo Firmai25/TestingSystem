@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,16 @@ namespace TestingSystem.Pages
         private void OpenAllTests_Click(object sender, RoutedEventArgs e)
         {
             App.windowClass.Window.NextPage(new Pages.Students.AllTestsPage());
+        }
+
+        private void Teacher_click(object sender, RoutedEventArgs e)
+        {
+            App.windowClass.Window.NextPage(new Teachers.AutorizationTeacherPage());
+        }
+
+        private void Exit_click(object sender, RoutedEventArgs e)
+        {
+            App.windowClass.Window.CloseWindows();
         }
     }
 }

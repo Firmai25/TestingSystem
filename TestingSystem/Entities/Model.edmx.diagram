@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f2d1009169684fd284934b5f55cd313a" Name="Diagram1">
+        <EntityTypeShape EntityType="Cherepanov_TestingModel.Answer" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cherepanov_TestingModel.Parameters_Question" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cherepanov_TestingModel.Parameters_Test" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cherepanov_TestingModel.Question" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cherepanov_TestingModel.Question_Answer" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cherepanov_TestingModel.Rating" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cherepanov_TestingModel.Rating_Test" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cherepanov_TestingModel.Teacher" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cherepanov_TestingModel.Test" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cherepanov_TestingModel.Type_question" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="Cherepanov_TestingModel.FK_Question_Answer_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="Cherepanov_TestingModel.FK_Parameters_Question_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="Cherepanov_TestingModel.FK_Parameters_Test_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="Cherepanov_TestingModel.FK_Question_Answer_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="Cherepanov_TestingModel.FK_Question_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="Cherepanov_TestingModel.FK_Question_Type_question" ManuallyRouted="false" />
+        <AssociationConnector Association="Cherepanov_TestingModel.FK_Rating_Test_Rating1" ManuallyRouted="false" />
+        <AssociationConnector Association="Cherepanov_TestingModel.FK_Rating_Test_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="Cherepanov_TestingModel.FK_Test_Teacher1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

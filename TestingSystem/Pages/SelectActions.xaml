@@ -28,11 +28,13 @@
         <Button Content="Пройти тест"
                 Grid.Column="1"
                 Click="OpenAllTests_Click"/>
-        <Button Content="Создать тест"
+        <Button Content="Я преподаватель"
                 Grid.Column="1"
-                Grid.Row="1"/>
+                Grid.Row="1"
+                Click="Teacher_click"/>
         <Button Content="Выйти"
                 Grid.Column="1"
-                Grid.Row="2"/>
+                Grid.Row="2"
+                Click="Exit_click"/>
     </Grid>
 </Page>

@@ -26,5 +26,10 @@ namespace TestingSystem.Pages.Students
             InitializeComponent();
             
         }
+
+        private void Back_click(object sender, RoutedEventArgs e)
+        {
+            App.windowClass.Window.BackPage();
+        }
     }
 }

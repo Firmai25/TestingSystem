@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Cherepanov_TestingModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text_Answer" Type="nvarchar(max)" />
+          <Property Name="Number" Type="int" />
+          <Property Name="Correct" Type="int" />
+        </EntityType>
+        <EntityType Name="Parameters_Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_question" Type="int" />
+        </EntityType>
+        <EntityType Name="Parameters_Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_Test" Type="int" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Test" Type="int" />
+          <Property Name="Text_question" Type="nvarchar(max)" />
+          <Property Name="id_type" Type="int" />
+        </EntityType>
+        <EntityType Name="Question_Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_question" Type="int" />
+          <Property Name="Id_Answer" Type="int" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Point" Type="int" />
+        </EntityType>
+        <EntityType Name="Rating_Test">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Rating" Type="int" />
+          <Property Name="Id_Test" Type="int" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+          <Property Name="Login" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="id_Teacher" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Type_question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Parameters_Question_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Parameters_Question" Type="Self.Parameters_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parameters_Question">
+              <PropertyRef Name="Id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parameters_Test_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Parameters_Test" Type="Self.Parameters_Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parameters_Test">
+              <PropertyRef Name="Id_Test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Answer_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+          <End Role="Question_Answer" Type="Self.Question_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question_Answer">
+              <PropertyRef Name="Id_Answer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Answer_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Question_Answer" Type="Self.Question_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question_Answer">
+              <PropertyRef Name="Id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="Id_Test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Type_question">
+          <End Role="Type_question" Type="Self.Type_question" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="id_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Test_Rating1">
+          <End Role="Rating" Type="Self.Rating" Multiplicity="0..1" />
+          <End Role="Rating_Test" Type="Self.Rating_Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rating">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating_Test">
+              <PropertyRef Name="Id_Rating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Test_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Rating_Test" Type="Self.Rating_Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating_Test">
+              <PropertyRef Name="Id_Test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Teacher1">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="id_Teacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Cherepanov_TestingModelContainer">
+          <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parameters_Question" EntityType="Self.Parameters_Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parameters_Test" EntityType="Self.Parameters_Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question_Answer" EntityType="Self.Question_Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rating_Test" EntityType="Self.Rating_Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_question" EntityType="Self.Type_question" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Parameters_Question_Question" Association="Self.FK_Parameters_Question_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Parameters_Question" EntitySet="Parameters_Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parameters_Test_Test" Association="Self.FK_Parameters_Test_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="Parameters_Test" EntitySet="Parameters_Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Answer_Answer" Association="Self.FK_Question_Answer_Answer">
+            <End Role="Answer" EntitySet="Answer" />
+            <End Role="Question_Answer" EntitySet="Question_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Answer_Question" Association="Self.FK_Question_Answer_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Question_Answer" EntitySet="Question_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Test" Association="Self.FK_Question_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Type_question" Association="Self.FK_Question_Type_question">
+            <End Role="Type_question" EntitySet="Type_question" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Test_Rating1" Association="Self.FK_Rating_Test_Rating1">
+            <End Role="Rating" EntitySet="Rating" />
+            <End Role="Rating_Test" EntitySet="Rating_Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Test_Test" Association="Self.FK_Rating_Test_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="Rating_Test" EntitySet="Rating_Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Teacher1" Association="Self.FK_Test_Teacher1">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Cherepanov_TestingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="Correct" Type="Int32" />
+          <NavigationProperty Name="Question_Answer" Relationship="Self.FK_Question_Answer_Answer" FromRole="Answer" ToRole="Question_Answer" />
+        </EntityType>
+        <EntityType Name="Parameters_Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_question" Type="Int32" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_Parameters_Question_Question" FromRole="Parameters_Question" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Parameters_Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_Test" Type="Int32" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_Parameters_Test_Test" FromRole="Parameters_Test" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Test" Type="Int32" />
+          <Property Name="Text_question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_type" Type="Int32" />
+          <NavigationProperty Name="Parameters_Question" Relationship="Self.FK_Parameters_Question_Question" FromRole="Question" ToRole="Parameters_Question" />
+          <NavigationProperty Name="Question_Answer" Relationship="Self.FK_Question_Answer_Question" FromRole="Question" ToRole="Question_Answer" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_Question_Test" FromRole="Question" ToRole="Test" />
+          <NavigationProperty Name="Type_question" Relationship="Self.FK_Question_Type_question" FromRole="Question" ToRole="Type_question" />
+        </EntityType>
+        <EntityType Name="Question_Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_question" Type="Int32" />
+          <Property Name="Id_Answer" Type="Int32" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_Question_Answer_Answer" FromRole="Question_Answer" ToRole="Answer" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_Question_Answer_Question" FromRole="Question_Answer" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Point" Type="Int32" />
+          <NavigationProperty Name="Rating_Test" Relationship="Self.FK_Rating_Test_Rating1" FromRole="Rating" ToRole="Rating_Test" />
+        </EntityType>
+        <EntityType Name="Rating_Test">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Rating" Type="Int32" />
+          <Property Name="Id_Test" Type="Int32" />
+          <NavigationProperty Name="Rating" Relationship="Self.FK_Rating_Test_Rating1" FromRole="Rating_Test" ToRole="Rating" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_Rating_Test_Test" FromRole="Rating_Test" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tests" Relationship="Self.FK_Test_Teacher1" FromRole="Teacher" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_Teacher" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Parameters_Test" Relationship="Self.FK_Parameters_Test_Test" FromRole="Test" ToRole="Parameters_Test" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK_Question_Test" FromRole="Test" ToRole="Question" />
+          <NavigationProperty Name="Rating_Test" Relationship="Self.FK_Rating_Test_Test" FromRole="Test" ToRole="Rating_Test" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_Test_Teacher1" FromRole="Test" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Type_question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK_Question_Type_question" FromRole="Type_question" ToRole="Question" />
+        </EntityType>
+        <Association Name="FK_Question_Answer_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+          <End Role="Question_Answer" Type="Self.Question_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question_Answer">
+              <PropertyRef Name="Id_Answer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parameters_Question_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Parameters_Question" Type="Self.Parameters_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parameters_Question">
+              <PropertyRef Name="Id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parameters_Test_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Parameters_Test" Type="Self.Parameters_Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parameters_Test">
+              <PropertyRef Name="Id_Test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Answer_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Question_Answer" Type="Self.Question_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question_Answer">
+              <PropertyRef Name="Id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="Id_Test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Type_question">
+          <End Role="Type_question" Type="Self.Type_question" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="id_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Test_Rating1">
+          <End Role="Rating" Type="Self.Rating" Multiplicity="0..1" />
+          <End Role="Rating_Test" Type="Self.Rating_Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rating">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating_Test">
+              <PropertyRef Name="Id_Rating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Test_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Rating_Test" Type="Self.Rating_Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating_Test">
+              <PropertyRef Name="Id_Test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Teacher1">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="id_Teacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Cherepanov_TestingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Answers" EntityType="Self.Answer" />
+          <EntitySet Name="Parameters_Question" EntityType="Self.Parameters_Question" />
+          <EntitySet Name="Parameters_Test" EntityType="Self.Parameters_Test" />
+          <EntitySet Name="Questions" EntityType="Self.Question" />
+          <EntitySet Name="Question_Answer" EntityType="Self.Question_Answer" />
+          <EntitySet Name="Ratings" EntityType="Self.Rating" />
+          <EntitySet Name="Rating_Test" EntityType="Self.Rating_Test" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+          <EntitySet Name="Tests" EntityType="Self.Test" />
+          <EntitySet Name="Type_question" EntityType="Self.Type_question" />
+          <AssociationSet Name="FK_Question_Answer_Answer" Association="Self.FK_Question_Answer_Answer">
+            <End Role="Answer" EntitySet="Answers" />
+            <End Role="Question_Answer" EntitySet="Question_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parameters_Question_Question" Association="Self.FK_Parameters_Question_Question">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Parameters_Question" EntitySet="Parameters_Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parameters_Test_Test" Association="Self.FK_Parameters_Test_Test">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="Parameters_Test" EntitySet="Parameters_Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Answer_Question" Association="Self.FK_Question_Answer_Question">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Question_Answer" EntitySet="Question_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Test" Association="Self.FK_Question_Test">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Type_question" Association="Self.FK_Question_Type_question">
+            <End Role="Type_question" EntitySet="Type_question" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Test_Rating1" Association="Self.FK_Rating_Test_Rating1">
+            <End Role="Rating" EntitySet="Ratings" />
+            <End Role="Rating_Test" EntitySet="Rating_Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Test_Test" Association="Self.FK_Rating_Test_Test">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="Rating_Test" EntitySet="Rating_Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Teacher1" Association="Self.FK_Test_Teacher1">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="Test" EntitySet="Tests" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Cherepanov_TestingModelContainer" CdmEntityContainer="Cherepanov_TestingEntities">
+          <EntitySetMapping Name="Answers">
+            <EntityTypeMapping TypeName="Cherepanov_TestingModel.Answer">
+              <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text_Answer" ColumnName="Text_Answer" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Correct" ColumnName="Correct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parameters_Question">
+            <EntityTypeMapping TypeName="Cherepanov_TestingModel.Parameters_Question">
+              <MappingFragment StoreEntitySet="Parameters_Question">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_question" ColumnName="Id_question" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parameters_Test">
+            <EntityTypeMapping TypeName="Cherepanov_TestingModel.Parameters_Test">
+              <MappingFragment StoreEntitySet="Parameters_Test">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Test" ColumnName="Id_Test" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="Cherepanov_TestingModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Test" ColumnName="Id_Test" />
+                <ScalarProperty Name="Text_question" ColumnName="Text_question" />
+                <ScalarProperty Name="id_type" ColumnName="id_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Question_Answer">
+            <EntityTypeMapping TypeName="Cherepanov_TestingModel.Question_Answer">
+              <MappingFragment StoreEntitySet="Question_Answer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_question" ColumnName="Id_question" />
+                <ScalarProperty Name="Id_Answer" ColumnName="Id_Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="Cherepanov_TestingModel.Rating">
+              <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rating_Test">
+            <EntityTypeMapping TypeName="Cherepanov_TestingModel.Rating_Test">
+              <MappingFragment StoreEntitySet="Rating_Test">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Id_Rating" ColumnName="Id_Rating" />
+                <ScalarProperty Name="Id_Test" ColumnName="Id_Test" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="Cherepanov_TestingModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="Cherepanov_TestingModel.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id_Teacher" ColumnName="id_Teacher" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_question">
+            <EntityTypeMapping TypeName="Cherepanov_TestingModel.Type_question">
+              <MappingFragment StoreEntitySet="Type_question">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

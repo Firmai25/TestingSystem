@@ -18,3 +18,9 @@ E:\Repos\TestingSystem\TestingSystem\obj\Debug\TestingSystem.exe
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\TestingSystem.pdb
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\SelectActions.g.cs
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\SelectActions.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Students\InfoTestPage.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\SelectiActionTeacher.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Students\InfoTestPage.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\SelectiActionTeacher.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AutorizationTeacherPage.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AutorizationTeacherPage.baml

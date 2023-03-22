@@ -30,5 +30,15 @@ namespace TestingSystem
         {
             MainFrame.Navigate(page);
         }
+
+        public void BackPage()
+        {
+            MainFrame.GoBack();
+        }
+
+        public void CloseWindows()
+        {
+            Close();
+        }
     }
 }
