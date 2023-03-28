@@ -27,15 +27,12 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Button Content="Создать тест"
-                Grid.Column="1"
-                Click="OpenAllTests_Click"/>
+                Grid.Column="1"/>
         <Button Content="Созданные тесты"
                 Grid.Column="1"
-                Grid.Row="1"
-                Click="Teacher_click"/>
+                Grid.Row="1"/>
         <Button Content="Ввернуться"
                 Grid.Column="1"
-                Grid.Row="2"
-                Click="Exit_click"/>
+                Grid.Row="2"/>
     </Grid>
 </Page>

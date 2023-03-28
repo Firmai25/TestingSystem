@@ -26,3 +26,10 @@ E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AutorizationTeache
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AutorizationTeacherPage.baml
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\CreateTestPage.g.cs
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\TestingSystem_Content.g.cs
+E:\Repos\TestingSystem\TestingSystem\bin\Debug\EntityFramework.dll
+E:\Repos\TestingSystem\TestingSystem\bin\Debug\EntityFramework.SqlServer.dll
+E:\Repos\TestingSystem\TestingSystem\bin\Debug\EntityFramework.xml
+E:\Repos\TestingSystem\TestingSystem\bin\Debug\EntityFramework.SqlServer.xml
+E:\Repos\TestingSystem\TestingSystem\bin\Debug\ru\EntityFramework.resources.dll
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\CreateTestPage.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\TestingSystem.csproj.CopyComplete

@@ -8,34 +8,35 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CreateTestPage">
 
-    <Page.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Height" Value="80"/>
-            <Setter Property="Width" Value="300"/>
-            <Setter Property="FontSize" Value="30"/>
-        </Style>
-    </Page.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Content="Создать тест"
-                Grid.Column="1"
-                Click="OpenAllTests_Click"/>
-        <Button Content="Созданные тесты"
-                Grid.Column="1"
-                Grid.Row="1"
-                Click="Teacher_click"/>
-        <Button Content="Ввернуться"
-                Grid.Column="1"
-                Grid.Row="2"
-                Click="Exit_click"/>
+        <TextBox TextAlignment="Center"
+                 FontSize="30">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Название теста" Foreground="LightGray" FontSize="20"/>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
     </Grid>
 </Page>
