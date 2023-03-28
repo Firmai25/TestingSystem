@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Repos\TestingSystem\TestingSystem\App.xaml
-6690079201
+7-446308447
 2973112643
-25149239451
+26-1086369601
 18416570709
-MainWindow.xaml;Pages\SelectActions.xaml;Pages\Students\AllTestsPage.xaml;Pages\Students\InfoTestPage.xaml;Pages\Teachers\AutorizationTeacherPage.xaml;Pages\Teachers\SelectiActionTeacher.xaml;
+MainWindow.xaml;Pages\SelectActions.xaml;Pages\Students\AllTestsPage.xaml;Pages\Students\InfoTestPage.xaml;Pages\Teachers\AutorizationTeacherPage.xaml;Pages\Teachers\CreateTestPage.xaml;Pages\Teachers\SelectiActionTeacher.xaml;
 
-False
+True
 

@@ -24,3 +24,5 @@ E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Students\InfoTestPage.baml
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\SelectiActionTeacher.baml
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AutorizationTeacherPage.g.cs
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AutorizationTeacherPage.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\CreateTestPage.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\TestingSystem_Content.g.cs
