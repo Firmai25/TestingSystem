@@ -38,5 +38,36 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Описание теста"
+                       FontSize="30"
+                       HorizontalAlignment="Center"
+                       Margin="0,20,0,0"/>
+            <TextBox Height="230"
+                     Margin="20,20,20,0"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"/>
+            <Grid Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Отмена"
+                        Height="60"
+                        FontSize="30"
+                        Margin="20,0,20,0"
+                        Grid.Column="0"/>
+                <Button Content="Настройка теста"
+                        FontSize="30"
+                        Margin="20,0,20,0"
+                        Grid.Column="1"
+                        Click="OpenParametrs_click"/>
+                <Button Content="Создать тест"
+                        FontSize="30"
+                        Grid.Column="2"
+                        Margin="20,0,20,0"/>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>

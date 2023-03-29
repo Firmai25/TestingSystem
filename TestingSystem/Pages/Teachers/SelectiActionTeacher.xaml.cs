@@ -24,5 +24,22 @@ namespace TestingSystem.Pages.Teachers
         {
             InitializeComponent();
         }
+
+        private void ReturnSelectionActions_click(object sender, RoutedEventArgs e)
+        {
+            SelectActions selectActions = new SelectActions();
+            App.windowClass.Window.NextPage(selectActions);
+        }
+
+        private void AllCreateTest_click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CreateTest_Click(object sender, RoutedEventArgs e)
+        {
+            CreateTestPage createTestPage = new CreateTestPage();
+            App.windowClass.Window.NextPage(createTestPage);
+        }
     }
 }

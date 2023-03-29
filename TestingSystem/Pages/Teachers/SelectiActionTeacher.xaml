@@ -30,7 +30,8 @@
                 Grid.Column="1"/>
         <Button Content="Созданные тесты"
                 Grid.Column="1"
-                Grid.Row="1"/>
+                Grid.Row="1"
+                Click="CreateTest_Click"/>
         <Button Content="Ввернуться"
                 Grid.Column="1"
                 Grid.Row="2"/>

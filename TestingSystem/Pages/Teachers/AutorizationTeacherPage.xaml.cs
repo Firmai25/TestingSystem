@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestingSystem.Entities;
 
 namespace TestingSystem.Pages.Teachers
 {
@@ -20,6 +21,7 @@ namespace TestingSystem.Pages.Teachers
     /// </summary>
     public partial class AutorizationTeacherPage : Page
     {
+        Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
         public AutorizationTeacherPage()
         {
             InitializeComponent();
@@ -28,6 +30,20 @@ namespace TestingSystem.Pages.Teachers
         private void Back_click(object sender, RoutedEventArgs e)
         {
             App.windowClass.Window.BackPage();
+        }
+
+        private void Autorization_Click(object sender, RoutedEventArgs e)
+        {
+            Teacher teacher = db.Teachers.Where(b => b.Login == TbLogin.Text && b.Password == TbPassword.Text).FirstOrDefault();
+            if (teacher != null)
+            {
+                SelectiActionTeacher selectiAction = new SelectiActionTeacher();
+                App.windowClass.Window.NextPage(selectiAction);
+            }
+            else
+            {
+                MessageBox.Show("Такой пользователь не найден");
+            }
         }
     }
 }

@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:TestingSystem"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        MinHeight="400"
+        MinWidth="600">
     <Grid>
         <Frame x:Name="MainFrame"
                Source="Pages/SelectActions.xaml"/>

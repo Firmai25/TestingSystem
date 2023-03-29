@@ -75,7 +75,8 @@
                     Height="40"
                     Content="Авторизоваться"
                     Margin="0,40,0,0"
-                    FontSize="20">
+                    FontSize="20"
+                    Click="Autorization_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>

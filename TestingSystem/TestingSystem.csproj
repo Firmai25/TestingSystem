@@ -142,6 +142,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Teachers\ParametrsTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Teachers\SelectiActionTeacher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +166,9 @@
     </Compile>
     <Compile Include="Pages\Teachers\CreateTestPage.xaml.cs">
       <DependentUpon>CreateTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Teachers\ParametrsTestPage.xaml.cs">
+      <DependentUpon>ParametrsTestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Teachers\SelectiActionTeacher.xaml.cs">
       <DependentUpon>SelectiActionTeacher.xaml</DependentUpon>
