@@ -22,6 +22,10 @@
     <EntitySetMapping Name="Parameters_Test">
       <EntityTypeMapping TypeName="Cherepanov_TestingModel.Parameters_Test">
         <MappingFragment StoreEntitySet="Parameters_Test">
+          <ScalarProperty Name="NumberTortures" ColumnName="NumberTortures" />
+          <ScalarProperty Name="TimeLimit" ColumnName="TimeLimit" />
+          <ScalarProperty Name="AbilityReturn" ColumnName="AbilityReturn" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Id_Test" ColumnName="Id_Test" />
         </MappingFragment>

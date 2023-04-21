@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestingSystem.Entities;
 
 namespace TestingSystem.Pages.Teachers
 {
@@ -20,6 +21,13 @@ namespace TestingSystem.Pages.Teachers
     /// </summary>
     public partial class CreateTestPage : Page
     {
+        Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
+        public Parameters_Test parameters = new Parameters_Test()
+        {
+            AbilityReturn = true,
+            Sequence = true,
+        };
+
         public CreateTestPage()
         {
             InitializeComponent();
@@ -27,8 +35,31 @@ namespace TestingSystem.Pages.Teachers
 
         private void OpenParametrs_click(object sender, RoutedEventArgs e)
         {
-            ParametrsTestPage parametrsTestPage = new ParametrsTestPage();
-            App.windowClass.Window.NextPage(parametrsTestPage);
+            Windows.ParametrsTestWindow window = new Windows.ParametrsTestWindow(parameters);
+            window.ShowDialog();
+        }
+
+        private void CreateTest_Click(object sender, RoutedEventArgs e)
+        {
+            if(TbTestName.Text != "")
+            {
+                Test test = new Test()
+                {
+                    Description = TbDescription.Text,
+                    id_Teacher = 1,
+                    Name = TbTestName.Text
+                };
+                db.Tests.Add(test);
+                db.SaveChanges();
+                parameters.Id_Test = test.Id;
+                db.Parameters_Test.Add(parameters);
+                db.SaveChanges();
+                App.windowClass.Window.NextPage(new CreateQuestionPage());
+            }
+            else
+            {
+                MessageBox.Show("Имя должно быть заполнено");
+            }
         }
     }
 }

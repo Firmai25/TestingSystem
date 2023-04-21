@@ -20,8 +20,12 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Id_Test" Type="int" />
+    <Property Name="Sequence" Type="bit" />
+    <Property Name="AbilityReturn" Type="bit" />
+    <Property Name="TimeLimit" Type="int" />
+    <Property Name="NumberTortures" Type="int" />
   </EntityType>
   <EntityType Name="Question">
     <Key>

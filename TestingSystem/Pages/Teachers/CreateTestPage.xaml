@@ -14,25 +14,37 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBox TextAlignment="Center"
-                 FontSize="30">
+                 FontSize="30"
+                 x:Name="TbTestName">
             <TextBox.Style>
                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                     <Style.Resources>
-                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                        <VisualBrush x:Key="CueBannerBrush" 
+                                     AlignmentX="Left" 
+                                     AlignmentY="Center" 
+                                     Stretch="None">
                             <VisualBrush.Visual>
-                                <Label Content="Название теста" Foreground="LightGray" FontSize="20"/>
+                                <Label Content="Название теста" 
+                                       Foreground="LightGray" 
+                                       FontSize="20"/>
                             </VisualBrush.Visual>
                         </VisualBrush>
                     </Style.Resources>
                     <Style.Triggers>
-                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        <Trigger Property="Text" 
+                                 Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" 
+                                    Value="{StaticResource CueBannerBrush}" />
                         </Trigger>
-                        <Trigger Property="Text" Value="{x:Null}">
-                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        <Trigger Property="Text" 
+                                 Value="{x:Null}">
+                            <Setter Property="Background" 
+                                    Value="{StaticResource CueBannerBrush}"/>
                         </Trigger>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter Property="Background" Value="White" />
+                        <Trigger Property="IsKeyboardFocused" 
+                                 Value="True">
+                            <Setter Property="Background" 
+                                    Value="White" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -46,7 +58,8 @@
             <TextBox Height="230"
                      Margin="20,20,20,0"
                      TextWrapping="Wrap"
-                     AcceptsReturn="True"/>
+                     AcceptsReturn="True"
+                     x:Name="TbDescription"/>
             <Grid Margin="0,20,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -66,7 +79,8 @@
                 <Button Content="Создать тест"
                         FontSize="30"
                         Grid.Column="2"
-                        Margin="20,0,20,0"/>
+                        Margin="20,0,20,0"
+                        Click="CreateTest_Click"/>
             </Grid>
         </StackPanel>
     </Grid>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Cherepanov_TestingModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Cherepanov_TestingModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Answer">
           <Key>
             <PropertyRef Name="Id" />
@@ -25,8 +25,12 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_Test" Type="int" />
+          <Property Name="Sequence" Type="bit" />
+          <Property Name="AbilityReturn" Type="bit" />
+          <Property Name="TimeLimit" Type="int" />
+          <Property Name="NumberTortures" Type="int" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -244,8 +248,7 @@
             <End Role="Test" EntitySet="Test" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Cherepanov_TestingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -274,6 +277,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Id_Test" Type="Int32" />
           <NavigationProperty Name="Test" Relationship="Self.FK_Parameters_Test_Test" FromRole="Parameters_Test" ToRole="Test" />
+          <Property Name="Sequence" Type="Boolean" />
+          <Property Name="AbilityReturn" Type="Boolean" />
+          <Property Name="TimeLimit" Type="Int32" />
+          <Property Name="NumberTortures" Type="Int32" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -533,6 +540,10 @@
           <EntitySetMapping Name="Parameters_Test">
             <EntityTypeMapping TypeName="Cherepanov_TestingModel.Parameters_Test">
               <MappingFragment StoreEntitySet="Parameters_Test">
+                <ScalarProperty Name="NumberTortures" ColumnName="NumberTortures" />
+                <ScalarProperty Name="TimeLimit" ColumnName="TimeLimit" />
+                <ScalarProperty Name="AbilityReturn" ColumnName="AbilityReturn" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Id_Test" ColumnName="Id_Test" />
               </MappingFragment>

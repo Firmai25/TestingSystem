@@ -25,6 +25,10 @@
     <Property Name="Id" Type="Int32" Nullable="false" />
     <Property Name="Id_Test" Type="Int32" />
     <NavigationProperty Name="Test" Relationship="Self.FK_Parameters_Test_Test" FromRole="Parameters_Test" ToRole="Test" />
+    <Property Name="Sequence" Type="Boolean" />
+    <Property Name="AbilityReturn" Type="Boolean" />
+    <Property Name="TimeLimit" Type="Int32" />
+    <Property Name="NumberTortures" Type="Int32" />
   </EntityType>
   <EntityType Name="Question">
     <Key>

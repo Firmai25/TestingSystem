@@ -16,6 +16,10 @@ namespace TestingSystem.Entities
     {
         public int Id { get; set; }
         public Nullable<int> Id_Test { get; set; }
+        public Nullable<bool> Sequence { get; set; }
+        public Nullable<bool> AbilityReturn { get; set; }
+        public Nullable<int> TimeLimit { get; set; }
+        public Nullable<int> NumberTortures { get; set; }
     
         public virtual Test Test { get; set; }
     }

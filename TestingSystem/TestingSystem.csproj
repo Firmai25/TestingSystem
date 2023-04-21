@@ -64,6 +64,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\Teachers\CreateQuestionPage.xaml.cs">
+      <DependentUpon>CreateQuestionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.xaml.cs">
+      <DependentUpon>MultipleAnswersQuestionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Teachers\QuestionPage\OneAnswerQuestonPage.xaml.cs">
+      <DependentUpon>OneAnswerQuestonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ParametrsTestWindow.xaml.cs">
+      <DependentUpon>ParametrsTestWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -138,15 +150,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Teachers\CreateQuestionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Teachers\CreateTestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Teachers\ParametrsTestPage.xaml">
+    <Page Include="Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Teachers\QuestionPage\OneAnswerQuestonPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Teachers\SelectiActionTeacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ParametrsTestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,9 +190,6 @@
     </Compile>
     <Compile Include="Pages\Teachers\CreateTestPage.xaml.cs">
       <DependentUpon>CreateTestPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Teachers\ParametrsTestPage.xaml.cs">
-      <DependentUpon>ParametrsTestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Teachers\SelectiActionTeacher.xaml.cs">
       <DependentUpon>SelectiActionTeacher.xaml</DependentUpon>

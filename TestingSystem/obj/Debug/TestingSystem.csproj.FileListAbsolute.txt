@@ -33,5 +33,11 @@ E:\Repos\TestingSystem\TestingSystem\bin\Debug\EntityFramework.SqlServer.xml
 E:\Repos\TestingSystem\TestingSystem\bin\Debug\ru\EntityFramework.resources.dll
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\CreateTestPage.baml
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\TestingSystem.csproj.CopyComplete
-E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\ParametrsTestPage.g.cs
-E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\ParametrsTestPage.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\ParametrsTestWindow.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\ParametrsTestWindow.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\CreateQuestionPage.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\CreateQuestionPage.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\QuestionPage\OneAnswerQuestonPage.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\QuestionPage\OneAnswerQuestonPage.baml

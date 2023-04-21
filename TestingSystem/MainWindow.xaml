@@ -11,6 +11,7 @@
         MinWidth="600">
     <Grid>
         <Frame x:Name="MainFrame"
-               Source="Pages/SelectActions.xaml"/>
+               Source="Pages/Teachers/QuestionPage/OneAnswerQuestonPage.xaml"/>
     </Grid>
+    <!--Source="Pages/SelectActions.xaml"-->
 </Window>

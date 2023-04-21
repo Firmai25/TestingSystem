@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TestingSystem.Pages.Teachers
+namespace TestingSystem.Pages.Teachers.QuestionPage
 {
     /// <summary>
-    /// Логика взаимодействия для ParametrsTestPage.xaml
+    /// Логика взаимодействия для MultipleAnswersQuestionPage.xaml
     /// </summary>
-    public partial class ParametrsTestPage : Page
+    public partial class MultipleAnswersQuestionPage : Page
     {
-        public ParametrsTestPage()
+        public MultipleAnswersQuestionPage()
         {
             InitializeComponent();
         }
