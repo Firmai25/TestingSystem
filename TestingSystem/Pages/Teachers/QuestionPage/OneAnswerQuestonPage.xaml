@@ -13,8 +13,9 @@
             <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox FontSize="33"
-                 TextWrapping="Wrap"/>
+        <TextBox FontSize="20"
+                 TextWrapping="Wrap"
+                 BorderThickness="3"/>
         <Grid Grid.Row="1"
               x:Name="MainQuestionGrid">
             <Grid.ColumnDefinitions>
@@ -27,22 +28,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
-            <!--<TextBox x:Name="QuestionOne"
-                     FontSize="20"
-                     Grid.Column="1"
-                     Margin="0,10,0,10"
-                     BorderBrush="red"
-                     BorderThickness="3"/>
-            <Viewbox Height="30">
-                <RadioButton GroupName="GrQuest"
-                             HorizontalAlignment="Center"
-                             VerticalAlignment="Center"
-                             x:Name="rbQuestionOne"
-                             Checked="rbQuestionOne_Checked"/>
-            </Viewbox>
-            <Button Content="Удалить"
-                    Grid.Column="2"/>-->
+            <Button Content="Добавить новый вариант ответа"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="10"
+                    Click="AddAnswer_click"
+                    x:Name="BtnAddAnswer"/>
         </Grid>
     </Grid>
 </Page>

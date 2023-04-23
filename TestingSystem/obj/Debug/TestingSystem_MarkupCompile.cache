@@ -16,5 +16,5 @@ E:\Repos\TestingSystem\TestingSystem\App.xaml
 18416570709
 MainWindow.xaml;Pages\SelectActions.xaml;Pages\Students\AllTestsPage.xaml;Pages\Students\InfoTestPage.xaml;Pages\Teachers\AutorizationTeacherPage.xaml;Pages\Teachers\CreateQuestionPage.xaml;Pages\Teachers\CreateTestPage.xaml;Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.xaml;Pages\Teachers\QuestionPage\OneAnswerQuestonPage.xaml;Pages\Teachers\SelectiActionTeacher.xaml;Windows\ParametrsTestWindow.xaml;
 
-False
+True
 

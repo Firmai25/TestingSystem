@@ -37,7 +37,6 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
             GenerationTextBox(grid);
             GenerationButton(grid);
             countAnswer++;
-
         }
 
         List<Button> listButton = new List<Button>();
@@ -76,7 +75,7 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
                 AcceptsReturn = true
             };
             grid.Children.Add(textbox);
-            Grid.SetColumn(textbox, 1);
+            Grid.SetColumn(textbox, 1); -
             Grid.SetRow(textbox, countAnswer);
             listTextBox.Add(textbox);
         }
@@ -86,7 +85,7 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
             Button button = new Button()
             {
                 Content = "Удалить",
-                Height = 50,
+                Height = 40,
                 Margin = new Thickness(10, 0, 10, 0),
                 Name = "BtnDelete" + countAnswer.ToString()
             };
@@ -150,19 +149,29 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
 
         public void Displacement_of_objects(int number)
         {
-            MainQuestionGrid.RowDefinitions.RemoveAt(number);
+            if (countAnswer <= 6)
+            {
+                MainQuestionGrid.RowDefinitions.RemoveAt(number);
+            }
+            else
+            {
+                BtnAddAnswer.Visibility = Visibility.Visible;
+            }
             for (int i = number + 1; i < countAnswer; i++)
             {
                 DesplacementOfButton(i);
                 DesplacementOfTextBox(i);
                 DesplacementOfViewbox(i);
             }
+
         }
 
         public void DesplacementOfButton(int number)
         {
             string name = "BtnDelete" + number.ToString();
             Button button = listButton.Where(b => b.Name == name).FirstOrDefault();
+            int a = Grid.GetRow(button);
+            button.Name = "BtnDelete" + (number - 1).ToString();
             Grid.SetRow(button, Grid.GetRow(button) - 1);
             Grid.SetColumn(button, Grid.GetColumn(button));
         }
@@ -171,6 +180,7 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
         {
             string name = "tbQuestion" + number.ToString();
             TextBox textBox = listTextBox.Where(b => b.Name == name).FirstOrDefault();
+            textBox.Name = "tbQuestion" + (number - 1).ToString();
             Grid.SetRow(textBox, Grid.GetRow(textBox) - 1);
             Grid.SetColumn(textBox, Grid.GetColumn(textBox));
         }
@@ -179,8 +189,24 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
         {
             string name = "vbQuestion" + number.ToString();
             Viewbox viewbox = listViewbox.Where(b => b.Name == name).FirstOrDefault();
+            viewbox.Name = "vbQuestion" + (number - 1).ToString();
             Grid.SetRow(viewbox, Grid.GetRow(viewbox) - 1);
             Grid.SetColumn(viewbox, Grid.GetColumn(viewbox));
+        }
+
+        private void AddAnswer_click(object sender, RoutedEventArgs e)
+        {
+            if (countAnswer < 6)
+            {
+                MainQuestionGrid.RowDefinitions.Add(new RowDefinition());
+                Generating_a_question_field();
+            }
+            else
+            {
+                BtnAddAnswer.Visibility = Visibility.Collapsed;
+                Generating_a_question_field();
+            }
+            
         }
     }
 }

@@ -24,5 +24,10 @@ namespace TestingSystem.Pages.Teachers
         {
             InitializeComponent();
         }
+
+        private void BackPage_click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
