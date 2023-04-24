@@ -39,9 +39,9 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
             countAnswer++;
         }
 
-        List<Button> listButton = new List<Button>();
-        List<Viewbox> listViewbox = new List<Viewbox>();
-        List<TextBox> listTextBox = new List<TextBox>();
+        public List<Button> listButton = new List<Button>();
+        public List<Viewbox> listViewbox = new List<Viewbox>();
+        public List<TextBox> listTextBox = new List<TextBox>();
 
         public void GenerationRadioButton(Grid grid)
         {
@@ -75,7 +75,7 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
                 AcceptsReturn = true
             };
             grid.Children.Add(textbox);
-            Grid.SetColumn(textbox, 1); -
+            Grid.SetColumn(textbox, 1);
             Grid.SetRow(textbox, countAnswer);
             listTextBox.Add(textbox);
         }

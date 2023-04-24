@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingSystem.Windows"
         mc:Ignorable="d"
-        Title="Параметры теста" Height="450" Width="800">
+        Title="Параметры теста" Height="450" Width="850">
     <Grid>
         <Grid Background="White">
             <Grid.RowDefinitions>
@@ -18,7 +18,7 @@
                            FontSize="30"
                            HorizontalAlignment="Center"
                            Margin="0,20,0,0"/>
-                    <TextBlock Text="Последовательность вопросов"
+                    <TextBlock Text="Порядок вопросов"
                            FontSize="25"
                            HorizontalAlignment="Center"/>
                     <Grid Height="40">

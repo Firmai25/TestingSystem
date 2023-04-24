@@ -29,7 +29,6 @@ namespace TestingSystem.Entities
         public virtual DbSet<Parameters_Question> Parameters_Question { get; set; }
         public virtual DbSet<Parameters_Test> Parameters_Test { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
-        public virtual DbSet<Question_Answer> Question_Answer { get; set; }
         public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<Rating_Test> Rating_Test { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }

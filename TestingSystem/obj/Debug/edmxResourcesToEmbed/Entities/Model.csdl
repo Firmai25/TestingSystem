@@ -6,9 +6,9 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Text_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Number" Type="Int32" />
     <Property Name="Correct" Type="Int32" />
-    <NavigationProperty Name="Question_Answer" Relationship="Self.FK_Question_Answer_Answer" FromRole="Answer" ToRole="Question_Answer" />
+    <Property Name="IdQuestion" Type="Int32" />
+    <NavigationProperty Name="Question" Relationship="Cherepanov_TestingModel.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
   </EntityType>
   <EntityType Name="Parameters_Question">
     <Key>
@@ -39,19 +39,9 @@
     <Property Name="Text_question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="id_type" Type="Int32" />
     <NavigationProperty Name="Parameters_Question" Relationship="Self.FK_Parameters_Question_Question" FromRole="Question" ToRole="Parameters_Question" />
-    <NavigationProperty Name="Question_Answer" Relationship="Self.FK_Question_Answer_Question" FromRole="Question" ToRole="Question_Answer" />
     <NavigationProperty Name="Test" Relationship="Self.FK_Question_Test" FromRole="Question" ToRole="Test" />
     <NavigationProperty Name="Type_question" Relationship="Self.FK_Question_Type_question" FromRole="Question" ToRole="Type_question" />
-  </EntityType>
-  <EntityType Name="Question_Answer">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Id_question" Type="Int32" />
-    <Property Name="Id_Answer" Type="Int32" />
-    <NavigationProperty Name="Answer" Relationship="Self.FK_Question_Answer_Answer" FromRole="Question_Answer" ToRole="Answer" />
-    <NavigationProperty Name="Question" Relationship="Self.FK_Question_Answer_Question" FromRole="Question_Answer" ToRole="Question" />
+    <NavigationProperty Name="Answers" Relationship="Cherepanov_TestingModel.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
   </EntityType>
   <EntityType Name="Rating">
     <Key>
@@ -105,18 +95,6 @@
     <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Questions" Relationship="Self.FK_Question_Type_question" FromRole="Type_question" ToRole="Question" />
   </EntityType>
-  <Association Name="FK_Question_Answer_Answer">
-    <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
-    <End Role="Question_Answer" Type="Self.Question_Answer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Answer">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Question_Answer">
-        <PropertyRef Name="Id_Answer" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Parameters_Question_Question">
     <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
     <End Role="Parameters_Question" Type="Self.Parameters_Question" Multiplicity="*" />
@@ -138,18 +116,6 @@
       </Principal>
       <Dependent Role="Parameters_Test">
         <PropertyRef Name="Id_Test" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Question_Answer_Question">
-    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
-    <End Role="Question_Answer" Type="Self.Question_Answer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Question">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Question_Answer">
-        <PropertyRef Name="Id_question" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -218,16 +184,11 @@
     <EntitySet Name="Parameters_Question" EntityType="Self.Parameters_Question" />
     <EntitySet Name="Parameters_Test" EntityType="Self.Parameters_Test" />
     <EntitySet Name="Questions" EntityType="Self.Question" />
-    <EntitySet Name="Question_Answer" EntityType="Self.Question_Answer" />
     <EntitySet Name="Ratings" EntityType="Self.Rating" />
     <EntitySet Name="Rating_Test" EntityType="Self.Rating_Test" />
     <EntitySet Name="Teachers" EntityType="Self.Teacher" />
     <EntitySet Name="Tests" EntityType="Self.Test" />
     <EntitySet Name="Type_question" EntityType="Self.Type_question" />
-    <AssociationSet Name="FK_Question_Answer_Answer" Association="Self.FK_Question_Answer_Answer">
-      <End Role="Answer" EntitySet="Answers" />
-      <End Role="Question_Answer" EntitySet="Question_Answer" />
-    </AssociationSet>
     <AssociationSet Name="FK_Parameters_Question_Question" Association="Self.FK_Parameters_Question_Question">
       <End Role="Question" EntitySet="Questions" />
       <End Role="Parameters_Question" EntitySet="Parameters_Question" />
@@ -235,10 +196,6 @@
     <AssociationSet Name="FK_Parameters_Test_Test" Association="Self.FK_Parameters_Test_Test">
       <End Role="Test" EntitySet="Tests" />
       <End Role="Parameters_Test" EntitySet="Parameters_Test" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Question_Answer_Question" Association="Self.FK_Question_Answer_Question">
-      <End Role="Question" EntitySet="Questions" />
-      <End Role="Question_Answer" EntitySet="Question_Answer" />
     </AssociationSet>
     <AssociationSet Name="FK_Question_Test" Association="Self.FK_Question_Test">
       <End Role="Test" EntitySet="Tests" />
@@ -260,5 +217,21 @@
       <End Role="Teacher" EntitySet="Teachers" />
       <End Role="Test" EntitySet="Tests" />
     </AssociationSet>
+    <AssociationSet Name="FK_Answer_Question" Association="Cherepanov_TestingModel.FK_Answer_Question">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_Answer_Question">
+    <End Type="Cherepanov_TestingModel.Question" Role="Question" Multiplicity="0..1" />
+    <End Type="Cherepanov_TestingModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="IdQuestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

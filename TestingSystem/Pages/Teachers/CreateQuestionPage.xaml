@@ -19,18 +19,67 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Content="&lt;"
-                    Width="120"
-                    Height="50"
-                    FontSize="30"/>
-            <Button Content="Вперёд"
-                    Grid.Column="5"
-                    Width="120"
-                    Height="50"
-                    FontSize="30"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Выход"
+                        Width="100"
+                        Height="50"/>
+                <Button Content="Сохранить"
+                        Width="100"
+                        Height="50"
+                        Grid.Column="1"
+                        Click="SaveTest_click"/>
+            </Grid>
+            <Button Grid.Column="1"
+                    Width="150"
+                    Height="50">
+                <StackPanel>
+                    <TextBlock Text="Удалить"
+                               TextAlignment="Center"/>
+                    <TextBlock Text="текущую страницу"/>
+                </StackPanel>
+            </Button>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Content="&lt;"
+                        Width="50"
+                        Height="50"
+                        FontSize="30"
+                        Click="BackPage_click"/>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Страница"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Bottom"
+                               Margin="0,0,0,5"/>
+                    <TextBlock x:Name="TbInfoPage"
+                               Grid.Row="1"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Center">
+                        <Run x:Name="TbCurrentPage" Text="5"/>
+                        <Run Text="из"/>
+                        <Run x:Name="TbCountPage" Text="20"/>
+                    </TextBlock>
+                </Grid>
+                <Button Content="&gt;"
+                        Grid.Column="5"
+                        Width="50"
+                        Height="50"
+                        FontSize="30"
+                        Click="NextPage_click"/>
+            </Grid>
         </Grid>
         <Frame x:Name="frameQuestion"
-               Grid.Row="1"
-               Source="QuestionPage/OneAnswerQuestonPage.xaml"/>
+               Grid.Row="1"/>
     </Grid>
 </Page>

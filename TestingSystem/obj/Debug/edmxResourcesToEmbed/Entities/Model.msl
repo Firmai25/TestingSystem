@@ -4,9 +4,9 @@
     <EntitySetMapping Name="Answers">
       <EntityTypeMapping TypeName="Cherepanov_TestingModel.Answer">
         <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Text_Answer" ColumnName="Text_Answer" />
-          <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="Correct" ColumnName="Correct" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -38,15 +38,6 @@
           <ScalarProperty Name="Id_Test" ColumnName="Id_Test" />
           <ScalarProperty Name="Text_question" ColumnName="Text_question" />
           <ScalarProperty Name="id_type" ColumnName="id_type" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Question_Answer">
-      <EntityTypeMapping TypeName="Cherepanov_TestingModel.Question_Answer">
-        <MappingFragment StoreEntitySet="Question_Answer">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Id_question" ColumnName="Id_question" />
-          <ScalarProperty Name="Id_Answer" ColumnName="Id_Answer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

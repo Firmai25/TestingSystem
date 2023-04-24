@@ -15,7 +15,8 @@
         </Grid.RowDefinitions>
         <TextBox FontSize="20"
                  TextWrapping="Wrap"
-                 BorderThickness="3"/>
+                 BorderThickness="3"
+                 x:Name="TbQuestion"/>
         <Grid Grid.Row="1"
               x:Name="MainQuestionGrid">
             <Grid.ColumnDefinitions>

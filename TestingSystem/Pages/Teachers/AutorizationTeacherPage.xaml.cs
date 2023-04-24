@@ -25,6 +25,8 @@ namespace TestingSystem.Pages.Teachers
         public AutorizationTeacherPage()
         {
             InitializeComponent();
+            TbLogin.Text = "Firmai";
+            TbPassword.Text = "123";
         }
 
         private void Back_click(object sender, RoutedEventArgs e)

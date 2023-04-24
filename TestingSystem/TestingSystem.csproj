@@ -112,9 +112,6 @@
     <Compile Include="Entities\Question.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Question_Answer.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\Rating.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
