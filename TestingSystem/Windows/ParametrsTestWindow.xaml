@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingSystem.Windows"
         mc:Ignorable="d"
-        Title="Параметры теста" Height="450" Width="850">
+        Title="Параметры теста" Height="450" Width="930"
+        MinHeight="400"
+        MinWidth="900"
+        WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid Background="White">
             <Grid.RowDefinitions>

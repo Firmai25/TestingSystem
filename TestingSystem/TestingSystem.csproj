@@ -64,6 +64,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\Students\PassTestPage.xaml.cs">
+      <DependentUpon>PassTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Students\QuestionPage\OneAnswerQuestonPage.xaml.cs">
+      <DependentUpon>OneAnswerQuestonPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Teachers\CreateQuestionPage.xaml.cs">
       <DependentUpon>CreateQuestionPage.xaml</DependentUpon>
     </Compile>
@@ -140,6 +146,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Students\InfoTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Students\PassTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Students\QuestionPage\OneAnswerQuestonPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

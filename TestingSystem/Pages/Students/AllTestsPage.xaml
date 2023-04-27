@@ -13,7 +13,8 @@
             <RowDefinition/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="lvAllTests">
+        <ListView x:Name="lvAllTests"
+                  MouseDoubleClick="lvAllTests_MouseDoubleClick">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -21,6 +22,27 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock FontSize="30">
+                                <Run Text="Название: "/>
+                                <Run Text="{Binding Name}"/>
+                            </TextBlock>
+                            <TextBlock FontSize="25">
+                                <Run Text="Описание:"/>
+                                <Run Text="{Binding Description}"
+                                     x:Name="rDescription"/>
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=rDescription, Path=Text}"
+                                                         Value="">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

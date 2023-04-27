@@ -41,3 +41,7 @@ E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\QuestionPage\Multi
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\QuestionPage\OneAnswerQuestonPage.g.cs
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.baml
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\QuestionPage\OneAnswerQuestonPage.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Students\PassTestPage.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Students\QuestionPage\OneAnswerQuestonPage.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Students\PassTestPage.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Students\QuestionPage\OneAnswerQuestonPage.baml

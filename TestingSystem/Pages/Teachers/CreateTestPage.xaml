@@ -70,7 +70,8 @@
                         Height="60"
                         FontSize="30"
                         Margin="20,0,20,0"
-                        Grid.Column="0"/>
+                        Grid.Column="0"
+                        Click="Back_Click"/>
                 <Button Content="Настройка теста"
                         FontSize="30"
                         Margin="20,0,20,0"

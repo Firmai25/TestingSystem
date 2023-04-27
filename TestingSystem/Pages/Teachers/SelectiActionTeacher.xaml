@@ -27,13 +27,14 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Button Content="Создать тест"
-                Grid.Column="1"/>
+                Grid.Column="1"
+                Click="CreateTest_Click"/>
         <Button Content="Созданные тесты"
                 Grid.Column="1"
-                Grid.Row="1"
-                Click="CreateTest_Click"/>
+                Grid.Row="1"/>
         <Button Content="Ввернуться"
                 Grid.Column="1"
-                Grid.Row="2"/>
+                Grid.Row="2"
+                Click="Back_click"/>
     </Grid>
 </Page>

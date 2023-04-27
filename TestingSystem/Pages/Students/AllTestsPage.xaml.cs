@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestingSystem.Entities;
 
 namespace TestingSystem.Pages.Students
 {
@@ -20,16 +21,25 @@ namespace TestingSystem.Pages.Students
     /// </summary>
     public partial class AllTestsPage : Page
     {
-        
+        Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
         public AllTestsPage()
         {
             InitializeComponent();
-            
+            lvAllTests.ItemsSource = db.Tests.ToList();
         }
 
         private void Back_click(object sender, RoutedEventArgs e)
         {
             App.windowClass.Window.BackPage();
+        }
+
+        private void lvAllTests_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (lvAllTests.SelectedIndex != -1)
+            {
+                Test test = lvAllTests.SelectedItem as Test;
+                App.windowClass.Window.NextPage(new InfoTestPage(test));
+            }
         }
     }
 }

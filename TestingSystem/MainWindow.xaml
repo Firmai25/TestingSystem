@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingSystem"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="800"
+        Title="MainWindow" Height="700" Width="850"
         WindowStartupLocation="CenterScreen"
         MinHeight="500"
-        MinWidth="600">
+        MinWidth="830">
     <Grid>
         <Frame x:Name="MainFrame"
-               Source="Pages/SelectActions.xaml"/>
+               Source="Pages/SelectActions.xaml"
+               NavigationUIVisibility="Hidden"/>
     </Grid>
-    <!--Source="Pages/SelectActions.xaml"-->
 </Window>

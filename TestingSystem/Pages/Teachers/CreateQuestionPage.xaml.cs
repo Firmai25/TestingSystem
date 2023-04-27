@@ -64,8 +64,7 @@ namespace TestingSystem.Pages.Teachers
         }
 
         private void SaveTest_click(object sender, RoutedEventArgs e)
-        {
-            
+        {          
             for (int i = 0; i < listPages.Count; i++)
             {
                 var page = listPages[i];
@@ -75,6 +74,7 @@ namespace TestingSystem.Pages.Teachers
                     SaveOnePageAnswer(pageOne);
                 }
             }
+            MessageBox.Show("Сохранение прошло успешно");
         }
 
         public Question SaveQuestion(OneAnswerQuestonPage page)
@@ -108,12 +108,46 @@ namespace TestingSystem.Pages.Teachers
                     IdQuestion = question.Id,
                 };
                 if (radioButton.IsChecked == true) 
-                {
-                    
+                {                 
                     answer.Correct = 1;
                 }
                 db.Answers.Add(answer);
                 db.SaveChanges();
+            }
+        }
+
+        private void DeleteCurrentPage_click(object sender, RoutedEventArgs e)
+        {
+            if (currentPage == 0)
+            {
+                if(listPages.Count > 1)
+                {
+                    listPages.RemoveAt(currentPage);
+                    frameQuestion.Navigate(listPages[currentPage]);
+                    TbCurrentPage.Text = (currentPage + 1).ToString();
+                    TbCountPage.Text = listPages.Count.ToString();
+                }
+            }
+            else
+            {
+                listPages.RemoveAt(currentPage);
+                currentPage--;
+                frameQuestion.Navigate(listPages[currentPage]);
+                TbCurrentPage.Text = (currentPage + 1).ToString();
+                TbCountPage.Text = listPages.Count.ToString();
+            }
+            
+        }
+
+        private void Exit_click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Вы уверены, что хотите выйти не сохранившиеся?", "Окно закрытия",
+                             MessageBoxButton.YesNo,
+                             MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                App.windowClass.Window.MainFrame.RemoveBackEntry();
+                App.windowClass.Window.NextPage(new SelectiActionTeacher());
             }
         }
     }

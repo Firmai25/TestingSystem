@@ -41,5 +41,11 @@ namespace TestingSystem.Pages.Teachers
             CreateTestPage createTestPage = new CreateTestPage();
             App.windowClass.Window.NextPage(createTestPage);
         }
+
+        private void Back_click(object sender, RoutedEventArgs e)
+        {
+            App.windowClass.Window.MainFrame.RemoveBackEntry();
+            App.windowClass.Window.NextPage(new SelectActions());
+        }
     }
 }

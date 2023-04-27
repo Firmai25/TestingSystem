@@ -36,6 +36,7 @@ namespace TestingSystem.Pages.Teachers
         private void OpenParametrs_click(object sender, RoutedEventArgs e)
         {
             Windows.ParametrsTestWindow window = new Windows.ParametrsTestWindow(parameters);
+            window.Owner = App.windowClass.Window;
             window.ShowDialog();
         }
 
@@ -60,6 +61,11 @@ namespace TestingSystem.Pages.Teachers
             {
                 MessageBox.Show("Имя должно быть заполнено");
             }
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            App.windowClass.Window.BackPage();
         }
     }
 }

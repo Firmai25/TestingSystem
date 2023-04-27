@@ -35,6 +35,7 @@ namespace TestingSystem.Windows
             parameters.TimeLimit = TimeLimitTest();
             parameters.NumberTortures = NumberTorturesTest();
             MessageBox.Show("Изменения успешно сохранены");
+            Close();
         }
 
         public bool SequenceQuestion()
