@@ -28,7 +28,7 @@
                         Width="100"
                         Height="50"
                         Click="Exit_click"/>
-                <Button Content="Закончить"
+                <Button Content="Завершить"
                         Width="100"
                         Height="50"
                         Grid.Column="1"
@@ -44,7 +44,9 @@
                         Width="50"
                         Height="50"
                         FontSize="30"
-                        Click="BackPage_click"/>
+                        Click="BackPage_click"
+                        x:Name="btnBack"
+                        IsEnabled="False"/>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -68,7 +70,8 @@
                         Width="50"
                         Height="50"
                         FontSize="30"
-                        Click="NextPage_click"/>
+                        Click="NextPage_click"
+                        x:Name="BtnNext"/>
             </Grid>
         </Grid>
         <Frame x:Name="frameQuestion"

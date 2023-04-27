@@ -39,7 +39,7 @@ namespace TestingSystem.Pages.Students.QuestionPage
 
         public List<Answer> listAnswers = new List<Answer>();
         public List<Viewbox> listViewbox = new List<Viewbox>();
-        public List<TextBlock> listTextBox = new List<TextBlock>();
+        public List<TextBlock> listTextBlock = new List<TextBlock>();
 
         public void Generating_a_question_field()
         {
@@ -84,7 +84,7 @@ namespace TestingSystem.Pages.Students.QuestionPage
             grid.Children.Add(textblock);
             Grid.SetColumn(textblock, 1);
             Grid.SetRow(textblock, currentAnswer);
-            listTextBox.Add(textblock);
+            listTextBlock.Add(textblock);
         }
     }
 }
