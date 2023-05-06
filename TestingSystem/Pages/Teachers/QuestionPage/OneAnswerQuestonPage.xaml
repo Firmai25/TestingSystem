@@ -26,10 +26,6 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
             <Button Content="Добавить новый вариант ответа"
                     Grid.ColumnSpan="3"

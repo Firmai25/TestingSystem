@@ -103,10 +103,9 @@
                                      Text="100"
                                      FontSize="30"/>
                                 <TextBlock Text="В минутах"
-                                       VerticalAlignment="Center"
-                                       FontSize="20"
-                                       Margin="10,0,0,0"
-                                       x:Name="TbMin">
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Margin="10,0,0,0">
                                 </TextBlock>
                             </StackPanel>
                         </StackPanel>

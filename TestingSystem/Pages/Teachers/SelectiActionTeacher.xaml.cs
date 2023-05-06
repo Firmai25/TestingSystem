@@ -20,6 +20,7 @@ namespace TestingSystem.Pages.Teachers
     /// </summary>
     public partial class SelectiActionTeacher : Page
     {
+        
         public SelectiActionTeacher()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace TestingSystem.Pages.Teachers
         private void ReturnSelectionActions_click(object sender, RoutedEventArgs e)
         {
             SelectActions selectActions = new SelectActions();
-            App.windowClass.Window.NextPage(selectActions);
+            App.dataClass.Window.NextPage(selectActions);
         }
 
         private void AllCreateTest_click(object sender, RoutedEventArgs e)
@@ -39,13 +40,19 @@ namespace TestingSystem.Pages.Teachers
         private void CreateTest_Click(object sender, RoutedEventArgs e)
         {
             CreateTestPage createTestPage = new CreateTestPage();
-            App.windowClass.Window.NextPage(createTestPage);
+            App.dataClass.Window.NextPage(createTestPage);
         }
 
         private void Back_click(object sender, RoutedEventArgs e)
         {
-            App.windowClass.Window.MainFrame.RemoveBackEntry();
-            App.windowClass.Window.NextPage(new SelectActions());
+            App.dataClass.Window.MainFrame.RemoveBackEntry();
+            App.dataClass.Window.NextPage(new SelectActions());
+        }
+
+        private void OpenAllCreateTest_Click(object sender, RoutedEventArgs e)
+        {
+            TestTeacherPage testTeacherPage = new TestTeacherPage(App.dataClass.Teacher);
+            App.dataClass.Window.NextPage(testTeacherPage);
         }
     }
 }

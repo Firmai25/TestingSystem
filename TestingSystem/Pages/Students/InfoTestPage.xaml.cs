@@ -57,12 +57,12 @@ namespace TestingSystem.Pages.Students
 
         private void Back_click(object sender, RoutedEventArgs e)
         {
-            App.windowClass.Window.BackPage();
+            App.dataClass.Window.BackPage();
         }
 
         private void StartTest_Click(object sender, RoutedEventArgs e)
         {
-            App.windowClass.Window.NextPage(new PassTestPage(test));
+            App.dataClass.Window.NextPage(new PassTestPage(test));
         }
     }
 }

@@ -30,7 +30,7 @@ namespace TestingSystem.Pages.Students
 
         private void Back_click(object sender, RoutedEventArgs e)
         {
-            App.windowClass.Window.BackPage();
+            App.dataClass.Window.BackPage();
         }
 
         private void lvAllTests_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -38,7 +38,7 @@ namespace TestingSystem.Pages.Students
             if (lvAllTests.SelectedIndex != -1)
             {
                 Test test = lvAllTests.SelectedItem as Test;
-                App.windowClass.Window.NextPage(new InfoTestPage(test));
+                App.dataClass.Window.NextPage(new InfoTestPage(test));
             }
         }
     }

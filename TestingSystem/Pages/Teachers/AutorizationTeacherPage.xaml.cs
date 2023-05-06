@@ -31,7 +31,7 @@ namespace TestingSystem.Pages.Teachers
 
         private void Back_click(object sender, RoutedEventArgs e)
         {
-            App.windowClass.Window.BackPage();
+            App.dataClass.Window.BackPage();
         }
 
         private void Autorization_Click(object sender, RoutedEventArgs e)
@@ -40,7 +40,8 @@ namespace TestingSystem.Pages.Teachers
             if (teacher != null)
             {
                 SelectiActionTeacher selectiAction = new SelectiActionTeacher();
-                App.windowClass.Window.NextPage(selectiAction);
+                App.dataClass.Teacher = teacher;
+                App.dataClass.Window.NextPage(selectiAction);
             }
             else
             {

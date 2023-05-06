@@ -23,7 +23,7 @@ namespace TestingSystem
         public MainWindow()
         {
             InitializeComponent();
-            App.windowClass.Window = this;
+            App.dataClass.Window = this;
         }
 
         public void NextPage(Page page)

@@ -36,7 +36,7 @@ namespace TestingSystem.Pages.Teachers
         private void OpenParametrs_click(object sender, RoutedEventArgs e)
         {
             Windows.ParametrsTestWindow window = new Windows.ParametrsTestWindow(parameters);
-            window.Owner = App.windowClass.Window;
+            window.Owner = App.dataClass.Window;
             window.ShowDialog();
         }
 
@@ -55,7 +55,7 @@ namespace TestingSystem.Pages.Teachers
                 parameters.Id_Test = test.Id;
                 db.Parameters_Test.Add(parameters);
                 db.SaveChanges();
-                App.windowClass.Window.NextPage(new CreateQuestionPage(test.Id));
+                App.dataClass.Window.NextPage(new CreateQuestionPage(test, false));
             }
             else
             {
@@ -65,7 +65,7 @@ namespace TestingSystem.Pages.Teachers
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            App.windowClass.Window.BackPage();
+            App.dataClass.Window.BackPage();
         }
     }
 }

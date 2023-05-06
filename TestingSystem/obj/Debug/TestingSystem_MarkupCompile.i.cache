@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Repos\TestingSystem\TestingSystem\App.xaml
-13-292806144
+151055946080
 2973112643
-31662122094
+332047294745
 18416570709
-MainWindow.xaml;Pages\SelectActions.xaml;Pages\Students\AllTestsPage.xaml;Pages\Students\InfoTestPage.xaml;Pages\Students\PassTestPage.xaml;Pages\Students\QuestionPage\OneAnswerQuestonPage.xaml;Pages\Teachers\AutorizationTeacherPage.xaml;Pages\Teachers\CreateQuestionPage.xaml;Pages\Teachers\CreateTestPage.xaml;Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.xaml;Pages\Teachers\QuestionPage\OneAnswerQuestonPage.xaml;Pages\Teachers\SelectiActionTeacher.xaml;Windows\ParametrsTestWindow.xaml;
+MainWindow.xaml;Pages\SelectActions.xaml;Pages\Students\AllTestsPage.xaml;Pages\Students\InfoTestPage.xaml;Pages\Students\PassTestPage.xaml;Pages\Students\QuestionPage\OneAnswerQuestonPage.xaml;Pages\Teachers\AutorizationTeacherPage.xaml;Pages\Teachers\CreateQuestionPage.xaml;Pages\Teachers\CreateTestPage.xaml;Pages\Teachers\InfoTestPage.xaml;Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.xaml;Pages\Teachers\QuestionPage\OneAnswerQuestonPage.xaml;Pages\Teachers\SelectiActionTeacher.xaml;Pages\Teachers\TestTeacherPage.xaml;Windows\ParametrsTestWindow.xaml;
 
 True
 

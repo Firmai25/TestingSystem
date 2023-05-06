@@ -60,7 +60,7 @@
                                Grid.Row="1"
                                VerticalAlignment="Top"
                                HorizontalAlignment="Center">
-                        <Run x:Name="TbCurrentPage" Text="5"/>
+                        <Run x:Name="TbCurrentPage" Text="1"/>
                         <Run Text="из"/>
                         <Run x:Name="TbCountPage" Text="20"/>
                     </TextBlock>
@@ -72,6 +72,28 @@
                         FontSize="30"
                         Click="NextPage_click"
                         x:Name="BtnNext"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="gridTime"
+                      Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="До завершения теста"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Bottom"
+                               Margin="0,0,0,5"/>
+                    <TextBlock Grid.Row="1"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Center"
+                               x:Name="tbTime"
+                               Text="Время"/>
+                </Grid>
             </Grid>
         </Grid>
         <Frame x:Name="frameQuestion"

@@ -73,11 +73,17 @@
     <Compile Include="Pages\Teachers\CreateQuestionPage.xaml.cs">
       <DependentUpon>CreateQuestionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Teachers\InfoTestPage.xaml.cs">
+      <DependentUpon>InfoTestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.xaml.cs">
       <DependentUpon>MultipleAnswersQuestionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Teachers\QuestionPage\OneAnswerQuestonPage.xaml.cs">
       <DependentUpon>OneAnswerQuestonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Teachers\TestTeacherPage.xaml.cs">
+      <DependentUpon>TestTeacherPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ParametrsTestWindow.xaml.cs">
       <DependentUpon>ParametrsTestWindow.xaml</DependentUpon>
@@ -90,7 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\MainWindowClass.cs" />
+    <Compile Include="Classes\DataClass.cs" />
     <Compile Include="Entities\Answer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -169,6 +175,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Teachers\InfoTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -178,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Teachers\SelectiActionTeacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Teachers\TestTeacherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

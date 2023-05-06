@@ -14,6 +14,6 @@ namespace TestingSystem
     /// </summary>
     public partial class App : Application
     {
-        public static MainWindowClass windowClass = new MainWindowClass();
+        public static DataClass dataClass = new DataClass();
     }
 }

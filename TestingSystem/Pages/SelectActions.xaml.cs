@@ -28,17 +28,17 @@ namespace TestingSystem.Pages
 
         private void OpenAllTests_Click(object sender, RoutedEventArgs e)
         {
-            App.windowClass.Window.NextPage(new Pages.Students.AllTestsPage());
+            App.dataClass.Window.NextPage(new Pages.Students.AllTestsPage());
         }
 
         private void Teacher_click(object sender, RoutedEventArgs e)
         {
-            App.windowClass.Window.NextPage(new Teachers.AutorizationTeacherPage());
+            App.dataClass.Window.NextPage(new Teachers.AutorizationTeacherPage());
         }
 
         private void Exit_click(object sender, RoutedEventArgs e)
         {
-            App.windowClass.Window.CloseWindows();
+            App.dataClass.Window.CloseWindows();
         }
     }
 }

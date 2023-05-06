@@ -29,10 +29,51 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
                 Generating_a_question_field();
             }
         }
+
+        public OneAnswerQuestonPage(Question question)
+        {
+            InitializeComponent();
+            TbQuestion.Text = question.Text_question;
+            Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
+            listAnswers = db.Answers.Where(b => b.IdQuestion == question.Id).ToList();
+            for (int i = 0; i < listAnswers.Count(); i++)
+            {
+                Creating_a_ready_made_question_field();
+            }
+        }
+
+
+        public void Creating_a_ready_made_question_field()
+        {
+            Grid grid = MainQuestionGrid;
+            grid.RowDefinitions.Add(new RowDefinition());
+            GenerationRadioButton(grid);
+            GenerationReadyTextBox(grid);
+            GenerationButton(grid);
+            countAnswer++;
+        }
+
+        public void GenerationReadyTextBox(Grid grid)
+        {
+            TextBox textbox = new TextBox()
+            {
+                Name = "tbQuestion" + countAnswer.ToString(),
+                FontSize = 20,
+                Margin = new Thickness(0, 10, 0, 10),
+                TextWrapping = TextWrapping.Wrap,
+                Text = listAnswers[countAnswer].Text_Answer,
+            };
+            grid.Children.Add(textbox);
+            Grid.SetColumn(textbox, 1);
+            Grid.SetRow(textbox, countAnswer);
+            listTextBox.Add(textbox);
+        }
+
         int countAnswer = 0;
         public void Generating_a_question_field()
         {
             Grid grid = MainQuestionGrid;
+            grid.RowDefinitions.Add(new RowDefinition());
             GenerationRadioButton(grid);
             GenerationTextBox(grid);
             GenerationButton(grid);
@@ -42,6 +83,7 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
         public List<Button> listButton = new List<Button>();
         public List<Viewbox> listViewbox = new List<Viewbox>();
         public List<TextBox> listTextBox = new List<TextBox>();
+        public List<Answer> listAnswers = new List<Answer>();
 
         public void GenerationRadioButton(Grid grid)
         {
@@ -60,7 +102,6 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
                 Name = "rbQuestion" + countAnswer.ToString(),
 
             };
-            radioButton.Checked += rbQuestionOne_Checked;
             viewbox.Child = radioButton;
         }
 
@@ -97,10 +138,6 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
             
         }
 
-        private void rbQuestionOne_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Delete_click(object sender, RoutedEventArgs e)
         {
@@ -198,11 +235,11 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
         {
             if (countAnswer < 6)
             {
-                MainQuestionGrid.RowDefinitions.Add(new RowDefinition());
                 Generating_a_question_field();
             }
             else
             {
+                MainQuestionGrid.RowDefinitions.RemoveAt(6);
                 BtnAddAnswer.Visibility = Visibility.Collapsed;
                 Generating_a_question_field();
             }

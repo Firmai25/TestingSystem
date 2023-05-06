@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TestingSystem.Entities;
 using TestingSystem.Pages.Teachers.QuestionPage;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TestingSystem.Pages.Teachers
 {
@@ -22,16 +23,42 @@ namespace TestingSystem.Pages.Teachers
     /// </summary>
     public partial class CreateQuestionPage : Page
     {
-        int IdQuestion;
-        public CreateQuestionPage(int idQuestion)
+        Test test;
+        public CreateQuestionPage(Test currentTest, bool edit)
         {
             InitializeComponent();
-            IdQuestion = idQuestion;
+            test = currentTest;
+            if (!edit)
+            {
+                Create();
+            }
+            else
+            {
+                Edit();
+            }
+            
+        }
+        public void Create()
+        {
             listPages.Add(new OneAnswerQuestonPage());
             frameQuestion.Navigate(listPages[currentPage]);
             TbCurrentPage.Text = (currentPage + 1).ToString();
             TbCountPage.Text = listPages.Count.ToString();
         }
+
+        public void Edit()
+        {
+            List<Question> listQuestion = new List<Question>();
+            listQuestion.AddRange(test.Questions);
+            for (int i = 0; i < listQuestion.Count; i++)
+            {
+                listPages.Add(new OneAnswerQuestonPage(listQuestion[i]));
+            }
+            frameQuestion.Navigate(listPages[0]);
+            TbCurrentPage.Text = (currentPage + 1).ToString();
+            TbCountPage.Text = listPages.Count.ToString();
+        }
+
         List<Page> listPages = new List<Page>();
         int currentPage = 0;
         private void BackPage_click(object sender, RoutedEventArgs e)
@@ -84,7 +111,7 @@ namespace TestingSystem.Pages.Teachers
             Question question = new Question()
             {
                 id_type = 1,
-                Id_Test = IdQuestion,
+                Id_Test = test.Id,
                 Text_question = textBox.Text,
             };
             db.Questions.Add(question);
@@ -146,8 +173,8 @@ namespace TestingSystem.Pages.Teachers
                              MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                App.windowClass.Window.MainFrame.RemoveBackEntry();
-                App.windowClass.Window.NextPage(new SelectiActionTeacher());
+                App.dataClass.Window.MainFrame.RemoveBackEntry();
+                App.dataClass.Window.NextPage(new SelectiActionTeacher());
             }
         }
     }

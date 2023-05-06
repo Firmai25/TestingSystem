@@ -26,6 +26,24 @@ namespace TestingSystem.Windows
         {
             InitializeComponent();
             parameters = parameters_Test;
+            CheckParametrs();
+        }
+
+        public void CheckParametrs()
+        {
+            if (parameters.Sequence == false) 
+            {
+                RbSequenceFalse.IsChecked = true;
+            }
+            if (parameters.AbilityReturn == false)
+            {
+                RbAbilityReturnFalse.IsChecked= true;
+            }
+            if (parameters.TimeLimit != null)
+            {
+                RbTime.IsChecked = true;
+                TbTime.Text = parameters.TimeLimit.ToString();
+            }
         }
 
         private void Save_click(object sender, RoutedEventArgs e)
@@ -82,7 +100,7 @@ namespace TestingSystem.Windows
             }
         }
 
-        public int? NumberTorturesTest()
+        public int? NumberTorturesTest() 
         {
             if (RbCount.IsChecked == true)
             {
