@@ -38,12 +38,37 @@ namespace TestingSystem.Pages.Teachers
             }
             
         }
+
+        public bool Cancel = false;
         public void Create()
         {
-            listPages.Add(new OneAnswerQuestonPage());
-            frameQuestion.Navigate(listPages[currentPage]);
-            TbCurrentPage.Text = (currentPage + 1).ToString();
-            TbCountPage.Text = listPages.Count.ToString();
+            Windows.SelectQuestionWindow window = new Windows.SelectQuestionWindow();
+            window.Owner = App.dataClass.Window;
+            window.ShowDialog();
+            if (window.type != null)
+            {
+                switch(window.type)
+                {
+                    case "Вопрос с одним ответом":
+                        listPages.Add(new OneAnswerQuestonPage());
+                        frameQuestion.Navigate(listPages[currentPage]);
+                        TbCurrentPage.Text = (currentPage + 1).ToString();
+                        TbCountPage.Text = listPages.Count.ToString();
+                        break;
+                    case "Вопрос с несколькими ответами":
+                        listPages.Add(new MultipleAnswersQuestionPage());
+                        frameQuestion.Navigate(listPages[currentPage]);
+                        TbCurrentPage.Text = (currentPage + 1).ToString();
+                        TbCountPage.Text = listPages.Count.ToString();
+                        break;
+                }
+                
+            }
+            else
+            {
+                Cancel = true;
+            }
+            
         }
 
         public void Edit()
@@ -52,7 +77,14 @@ namespace TestingSystem.Pages.Teachers
             listQuestion.AddRange(test.Questions);
             for (int i = 0; i < listQuestion.Count; i++)
             {
-                listPages.Add(new OneAnswerQuestonPage(listQuestion[i]));
+                if (listQuestion[i].id_type == 1)
+                {
+                    listPages.Add(new OneAnswerQuestonPage(listQuestion[i]));
+                }
+                if (listQuestion[i].id_type == 2)
+                {
+                    listPages.Add(new MultipleAnswersQuestionPage(listQuestion[i]));
+                }
             }
             frameQuestion.Navigate(listPages[0]);
             TbCurrentPage.Text = (currentPage + 1).ToString();
@@ -83,15 +115,34 @@ namespace TestingSystem.Pages.Teachers
             }
             else
             {
-                listPages.Add(new OneAnswerQuestonPage());
-                frameQuestion.Navigate(listPages[currentPage]);
-                TbCurrentPage.Text = (currentPage + 1).ToString();
-                TbCountPage.Text = listPages.Count.ToString();
+                Windows.SelectQuestionWindow window = new Windows.SelectQuestionWindow();
+                window.Owner = App.dataClass.Window;
+                window.ShowDialog();
+                if (window.type != null)
+                {
+                    switch (window.type)
+                    {
+                        case "Вопрос с одним ответом":
+                            listPages.Add(new OneAnswerQuestonPage());
+                            frameQuestion.Navigate(listPages[currentPage]);
+                            TbCurrentPage.Text = (currentPage + 1).ToString();
+                            TbCountPage.Text = listPages.Count.ToString();
+                            break;
+                        case "Вопрос с несколькими ответами":
+                            listPages.Add(new MultipleAnswersQuestionPage());
+                            frameQuestion.Navigate(listPages[currentPage]);
+                            TbCurrentPage.Text = (currentPage + 1).ToString();
+                            TbCountPage.Text = listPages.Count.ToString();
+                            break;
+                    }
+                }
+                    
             }
         }
 
         private void SaveTest_click(object sender, RoutedEventArgs e)
-        {          
+        {
+            deleteQuestion();
             for (int i = 0; i < listPages.Count; i++)
             {
                 var page = listPages[i];
@@ -100,11 +151,25 @@ namespace TestingSystem.Pages.Teachers
                     OneAnswerQuestonPage pageOne = page as OneAnswerQuestonPage;
                     SaveOnePageAnswer(pageOne);
                 }
+                if (page.Title == "MultipleAnswersQuestionPage")
+                {
+                    MultipleAnswersQuestionPage pageMulti = page as MultipleAnswersQuestionPage;
+                    SaveMultiPageAnswer(pageMulti);
+                }
             }
             MessageBox.Show("Сохранение прошло успешно");
         }
+        
+        public void deleteQuestion()
+        {
+            Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
+            var list = db.Questions.Where(b => b.Id_Test == test.Id).ToList();
+            db.Questions.RemoveRange(list);
+            db.SaveChanges();
+        }
 
-        public Question SaveQuestion(OneAnswerQuestonPage page)
+
+        public Question SaveOneQuestion(OneAnswerQuestonPage page)
         {
             Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
             TextBox textBox = page.TbQuestion;
@@ -119,9 +184,24 @@ namespace TestingSystem.Pages.Teachers
             return question;
         }
 
+        public Question SaveMultiQuestion(MultipleAnswersQuestionPage page)
+        {
+            Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
+            TextBox textBox = page.TbQuestion;
+            Question question = new Question()
+            {
+                id_type = 2,
+                Id_Test = test.Id,
+                Text_question = textBox.Text,
+            };
+            db.Questions.Add(question);
+            db.SaveChanges();
+            return question;
+        }
+
         public void SaveOnePageAnswer(OneAnswerQuestonPage page)
         {
-            Question question = SaveQuestion(page);
+            Question question = SaveOneQuestion(page);
             List<Viewbox> listViewbox = page.listViewbox;
             for (int i = 0; i < listViewbox.Count; i++)
             {
@@ -136,6 +216,30 @@ namespace TestingSystem.Pages.Teachers
                 };
                 if (radioButton.IsChecked == true) 
                 {                 
+                    answer.Correct = 1;
+                }
+                db.Answers.Add(answer);
+                db.SaveChanges();
+            }
+        }
+
+        public void SaveMultiPageAnswer(MultipleAnswersQuestionPage page)
+        {
+            Question question = SaveMultiQuestion(page);
+            List<Viewbox> listViewbox = page.listViewbox;
+            for (int i = 0; i < listViewbox.Count; i++)
+            {
+                CheckBox checkBox = listViewbox[i].Child as CheckBox;
+                Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
+                TextBox textBox = page.listTextBox[i];
+                Answer answer = new Answer()
+                {
+                    Correct = 0,
+                    Text_Answer = textBox.Text,
+                    IdQuestion = question.Id,
+                };
+                if (checkBox.IsChecked == true)
+                {
                     answer.Correct = 1;
                 }
                 db.Answers.Add(answer);

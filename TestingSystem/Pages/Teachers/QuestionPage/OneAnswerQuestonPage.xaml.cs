@@ -29,10 +29,11 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
                 Generating_a_question_field();
             }
         }
-
+        Question nameGroup;
         public OneAnswerQuestonPage(Question question)
         {
             InitializeComponent();
+            nameGroup = question;
             TbQuestion.Text = question.Text_question;
             Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
             listAnswers = db.Answers.Where(b => b.IdQuestion == question.Id).ToList();
@@ -47,10 +48,34 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
         {
             Grid grid = MainQuestionGrid;
             grid.RowDefinitions.Add(new RowDefinition());
-            GenerationRadioButton(grid);
+            GenerationReadyRadioButton(grid);
             GenerationReadyTextBox(grid);
             GenerationButton(grid);
             countAnswer++;
+        }
+
+        public void GenerationReadyRadioButton(Grid grid)
+        {
+            Viewbox viewbox = new Viewbox();
+            viewbox.Name = "vbQuestion" + countAnswer.ToString();
+            viewbox.Height = 30;
+            grid.Children.Add(viewbox);
+            Grid.SetColumn(viewbox, 0);
+            Grid.SetRow(viewbox, countAnswer);
+            listViewbox.Add(viewbox);
+            RadioButton radioButton = new RadioButton()
+            {
+                GroupName = nameGroup.Text_question,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Name = "rbQuestion" + countAnswer.ToString(),
+
+            };
+            if (listAnswers[countAnswer].Correct == 1)
+            {
+                radioButton.IsChecked = true;
+            }
+            viewbox.Child = radioButton;
         }
 
         public void GenerationReadyTextBox(Grid grid)
@@ -62,6 +87,7 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
                 Margin = new Thickness(0, 10, 0, 10),
                 TextWrapping = TextWrapping.Wrap,
                 Text = listAnswers[countAnswer].Text_Answer,
+                AcceptsReturn = true
             };
             grid.Children.Add(textbox);
             Grid.SetColumn(textbox, 1);
@@ -102,6 +128,10 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
                 Name = "rbQuestion" + countAnswer.ToString(),
 
             };
+            if (nameGroup != null)
+            {
+                radioButton.GroupName = nameGroup.Text_question;
+            }
             viewbox.Child = radioButton;
         }
 

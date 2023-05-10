@@ -49,3 +49,7 @@ E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\TestTeacherPage.g.
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\TestTeacherPage.baml
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\InfoTestPage.g.cs
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\InfoTestPage.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\SelectQuestionWindow.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\SelectQuestionWindow.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Students\QuestionPage\MultipleAnswersQuestionPage.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Students\QuestionPage\MultipleAnswersQuestionPage.baml

@@ -85,7 +85,9 @@
           <Property Name="name" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_Answer_Question">
-          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Question">

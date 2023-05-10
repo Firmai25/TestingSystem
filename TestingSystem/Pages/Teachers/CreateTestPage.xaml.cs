@@ -55,7 +55,11 @@ namespace TestingSystem.Pages.Teachers
                 parameters.Id_Test = test.Id;
                 db.Parameters_Test.Add(parameters);
                 db.SaveChanges();
-                App.dataClass.Window.NextPage(new CreateQuestionPage(test, false));
+                CreateQuestionPage page = new CreateQuestionPage(test, false);
+                if (!page.Cancel)
+                {
+                    App.dataClass.Window.NextPage(page);
+                }
             }
             else
             {

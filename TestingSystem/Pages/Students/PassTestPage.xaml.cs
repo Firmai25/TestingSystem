@@ -34,14 +34,21 @@ namespace TestingSystem.Pages.Students
             listQuestion = db.Questions.Where(b => b.Id_Test == test.Id).ToList();
             for (int i = 0; i < listQuestion.Count; i++)
             {
-                listPage.Add(new OneAnswerQuestonPage(listQuestion[i]));
+                if (listQuestion[i].id_type == 1)
+                {
+                    listPages.Add(new OneAnswerQuestonPage(listQuestion[i]));
+                }
+                if (listQuestion[i].id_type == 2)
+                {
+                    listPages.Add(new MultipleAnswersQuestionPage(listQuestion[i]));
+                }
             }
-            frameQuestion.Navigate(listPage[0]);
+            frameQuestion.Navigate(listPages[0]);
             TbCountPage.Text = listQuestion.Count().ToString();
             CheckParametrs(currentTest);
         }
         DispatcherTimer timer = new DispatcherTimer();
-        List<Page> listPage = new List<Page>();
+        List<Page> listPages = new List<Page>();
 
         public void CheckParametrs(Test test)
         {
@@ -50,14 +57,14 @@ namespace TestingSystem.Pages.Students
             if (parameters.Sequence == false)
             {
                 List<Page> newlistPage = new List<Page>();
-                for (int i = 0; i < listPage.Count; i++)
+                for (int i = 0; i < listPages.Count; i++)
                 {
                     Random rnd = new Random();
-                    int current = rnd.Next(listPage.Count);
-                    newlistPage.Add(listPage[current]);
-                    listPage.RemoveAt(current);
+                    int current = rnd.Next(listPages.Count);
+                    newlistPage.Add(listPages[current]);
+                    listPages.RemoveAt(current);
                 }
-                listPage = newlistPage;
+                listPages = newlistPage;
             }
             if (parameters.AbilityReturn == false)
             {
@@ -99,9 +106,10 @@ namespace TestingSystem.Pages.Students
 
         private void BackPage_click(object sender, RoutedEventArgs e)
         {
+            countTransitions++;
             currentQuestion--;
             BtnNext.IsEnabled = true;
-            frameQuestion.Navigate(listPage[currentQuestion]);
+            frameQuestion.Navigate(listPages[currentQuestion]);
             if (currentQuestion == 0)
             {
                 btnBack.IsEnabled = false;
@@ -112,16 +120,17 @@ namespace TestingSystem.Pages.Students
 
         private void NextPage_click(object sender, RoutedEventArgs e)
         {
+            countTransitions++;
             currentQuestion++;
             btnBack.IsEnabled = true;
-            frameQuestion.Navigate(listPage[currentQuestion]);
+            frameQuestion.Navigate(listPages[currentQuestion]);
             if (currentQuestion == listQuestion.Count() - 1)
             {
                 BtnNext.IsEnabled = false;
             }
             TbCurrentPage.Text = (currentQuestion + 1).ToString();
         }
-
+        int countTransitions = 0;
         private void Exit_click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show("Вы уверены, что хотите выйти", "Окно Вопроса",
@@ -129,6 +138,10 @@ namespace TestingSystem.Pages.Students
                                           MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
+                for (int i = 0; i < countTransitions; i++)
+                {
+                    App.dataClass.Window.MainFrame.RemoveBackEntry();
+                }                
                 App.dataClass.Window.BackPage();
             }
         }
@@ -143,23 +156,28 @@ namespace TestingSystem.Pages.Students
                 endTest();
             }
         }
-        int countPoint = 0;
+        double countPoint = 0;
 
         public void endTest()
         {
             countPoint = 0;
-            for (int i = 0; i < listPage.Count; i++)
+            for (int i = 0; i < listPages.Count; i++)
             {
-                var page = listPage[i];
+                var page = listPages[i];
                 if (page.Title == "OneAnswerQuestonPage")
                 {
                     OneAnswerQuestonPage oneAnswer = page as OneAnswerQuestonPage;
-                    CheckPage(oneAnswer);
+                    CheckOnePage(oneAnswer);
+                }
+                if (page.Title == "MultipleAnswersQuestionPage")
+                {
+                    MultipleAnswersQuestionPage multipleAnswers = page as MultipleAnswersQuestionPage;
+                    CheckMultiplePage(multipleAnswers);
                 }
             }
             MessageBox.Show($"Количество баллов {countPoint}");
         }
-        public void CheckPage(OneAnswerQuestonPage page)
+        public void CheckOnePage(OneAnswerQuestonPage page)
         {
             List<Viewbox> listViewbox = page.listViewbox;
             
@@ -174,7 +192,31 @@ namespace TestingSystem.Pages.Students
                         countPoint++;
                     }
                 }
+            }           
+        }
+        public void CheckMultiplePage(MultipleAnswersQuestionPage page)
+        {
+            List<Viewbox> listViewbox = page.listViewbox;
+            double countMax = 0;
+            double countCurrect = 0;
+            for (int i = 0; i < listViewbox.Count; i++)
+            {
+                Answer answer = page.listAnswers[i];
+                CheckBox checkBox = listViewbox[i].Child as CheckBox;
+                if (answer.Correct == 1)
+                {
+                    countMax++;
+                }
+                if (checkBox.IsChecked == true)
+                {
+                    
+                    if (answer.Correct == 1)
+                    {
+                        countCurrect++;
+                    }
+                }
             }
+            countPoint = countPoint + (countCurrect / countMax);
             
         }
     }

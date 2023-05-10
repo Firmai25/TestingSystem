@@ -67,6 +67,9 @@
     <Compile Include="Pages\Students\PassTestPage.xaml.cs">
       <DependentUpon>PassTestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Students\QuestionPage\MultipleAnswersQuestionPage.xaml.cs">
+      <DependentUpon>MultipleAnswersQuestionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Students\QuestionPage\OneAnswerQuestonPage.xaml.cs">
       <DependentUpon>OneAnswerQuestonPage.xaml</DependentUpon>
     </Compile>
@@ -87,6 +90,9 @@
     </Compile>
     <Compile Include="Windows\ParametrsTestWindow.xaml.cs">
       <DependentUpon>ParametrsTestWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SelectQuestionWindow.xaml.cs">
+      <DependentUpon>SelectQuestionWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +165,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Students\QuestionPage\MultipleAnswersQuestionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Students\QuestionPage\OneAnswerQuestonPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -196,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\ParametrsTestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SelectQuestionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
