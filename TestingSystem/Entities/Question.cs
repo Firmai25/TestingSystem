@@ -17,8 +17,9 @@ namespace TestingSystem.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Question()
         {
-            this.Parameters_Question = new HashSet<Parameters_Question>();
             this.Answers = new HashSet<Answer>();
+            this.Parameters_Question = new HashSet<Parameters_Question>();
+            this.Question_Answer = new HashSet<Question_Answer>();
         }
     
         public int Id { get; set; }
@@ -27,10 +28,12 @@ namespace TestingSystem.Entities
         public Nullable<int> id_type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Answer> Answers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Parameters_Question> Parameters_Question { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Question_Answer> Question_Answer { get; set; }
         public virtual Test Test { get; set; }
         public virtual Type_question Type_question { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Answer> Answers { get; set; }
     }
 }

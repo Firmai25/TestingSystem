@@ -73,22 +73,30 @@ namespace TestingSystem.Pages.Teachers
 
         public void Edit()
         {
-            List<Question> listQuestion = new List<Question>();
-            listQuestion.AddRange(test.Questions);
-            for (int i = 0; i < listQuestion.Count; i++)
+            try
             {
-                if (listQuestion[i].id_type == 1)
+                List<Question> listQuestion = new List<Question>();
+                listQuestion.AddRange(test.Questions);
+                for (int i = 0; i < listQuestion.Count; i++)
                 {
-                    listPages.Add(new OneAnswerQuestonPage(listQuestion[i]));
+                    if (listQuestion[i].id_type == 1)
+                    {
+                        listPages.Add(new OneAnswerQuestonPage(listQuestion[i]));
+                    }
+                    if (listQuestion[i].id_type == 2)
+                    {
+                        listPages.Add(new MultipleAnswersQuestionPage(listQuestion[i]));
+                    }
                 }
-                if (listQuestion[i].id_type == 2)
-                {
-                    listPages.Add(new MultipleAnswersQuestionPage(listQuestion[i]));
-                }
+                frameQuestion.Navigate(listPages[0]);
+                TbCurrentPage.Text = (currentPage + 1).ToString();
+                TbCountPage.Text = listPages.Count.ToString();
             }
-            frameQuestion.Navigate(listPages[0]);
-            TbCurrentPage.Text = (currentPage + 1).ToString();
-            TbCountPage.Text = listPages.Count.ToString();
+            catch
+            {
+                Create();
+            }
+            
         }
 
         List<Page> listPages = new List<Page>();
@@ -97,6 +105,7 @@ namespace TestingSystem.Pages.Teachers
         {
             if (currentPage > 0)
             {
+                countTransitions++;
                 currentPage--;
                 frameQuestion.Navigate(listPages[currentPage]);
                 TbCurrentPage.Text = (currentPage + 1).ToString();
@@ -112,6 +121,7 @@ namespace TestingSystem.Pages.Teachers
                 frameQuestion.Navigate(listPages[currentPage]);
                 TbCurrentPage.Text = (currentPage + 1).ToString();
                 TbCountPage.Text = listPages.Count.ToString();
+                countTransitions++;
             }
             else
             {
@@ -135,6 +145,7 @@ namespace TestingSystem.Pages.Teachers
                             TbCountPage.Text = listPages.Count.ToString();
                             break;
                     }
+                    countTransitions++;
                 }
                     
             }
@@ -142,24 +153,121 @@ namespace TestingSystem.Pages.Teachers
 
         private void SaveTest_click(object sender, RoutedEventArgs e)
         {
-            deleteQuestion();
+            if (Checkfield())
+            {
+                deleteQuestion();
+                for (int i = 0; i < listPages.Count; i++)
+                {
+                    var page = listPages[i];
+                    if (page.Title == "OneAnswerQuestonPage")
+                    {
+                        OneAnswerQuestonPage pageOne = page as OneAnswerQuestonPage;
+                        SaveOnePageAnswer(pageOne);
+                    }
+                    if (page.Title == "MultipleAnswersQuestionPage")
+                    {
+                        MultipleAnswersQuestionPage pageMulti = page as MultipleAnswersQuestionPage;
+                        SaveMultiPageAnswer(pageMulti);
+                    }
+                }
+                MessageBox.Show("Сохранение прошло успешно");
+            }
+            else
+            {
+                MessageBox.Show(message);
+            }
+            
+        }
+
+        string message = "";
+
+        public bool Checkfield()
+        {
+            message = "";
             for (int i = 0; i < listPages.Count; i++)
             {
                 var page = listPages[i];
                 if (page.Title == "OneAnswerQuestonPage")
                 {
                     OneAnswerQuestonPage pageOne = page as OneAnswerQuestonPage;
-                    SaveOnePageAnswer(pageOne);
+                    checkOneAnswer(pageOne, i);
                 }
                 if (page.Title == "MultipleAnswersQuestionPage")
                 {
                     MultipleAnswersQuestionPage pageMulti = page as MultipleAnswersQuestionPage;
-                    SaveMultiPageAnswer(pageMulti);
+                    checkMultipleAnswer(pageMulti, i);
                 }
             }
-            MessageBox.Show("Сохранение прошло успешно");
+            if (message == "")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
-        
+
+        public void checkOneAnswer(OneAnswerQuestonPage page, int currentPage)
+        {
+            if (page.TbQuestion.Text == "")
+            {
+                message += $"На странице {currentPage + 1} не заполнено поле c вопросом\n";
+            }
+            bool currect = false;
+            for (int i = 0; i < page.listTextBox.Count; i++)
+            {
+                if (page.listTextBox[i].Text == "")
+                {
+                    message += $"На странице {currentPage + 1} не заполнено поле c ответом №{i + 1}\n";
+                }
+                Viewbox viewbox = page.listViewbox[i];
+                RadioButton radioButton = viewbox.Child as RadioButton;
+                if (radioButton.IsChecked == true)
+                {
+                    currect = true;
+                }
+            }
+            if (currect == false)
+            {
+                message += $"На странице {currentPage + 1} не выбран правильный ответ\n";
+            }
+            
+        }
+
+        public void checkMultipleAnswer(MultipleAnswersQuestionPage page, int currentPage)
+        {
+            if (page.TbQuestion.Text == "")
+            {
+                message += $"На странице {currentPage + 1} не заполнено поле c вопросом\n";
+            }
+            int count = 0;
+            for (int i = 0; i < page.listTextBox.Count; i++)
+            {
+                if (page.listTextBox[i].Text == "")
+                {
+                    message += $"На странице {currentPage + 1} не заполнено поле №{i + 1}\n";
+                }
+                Viewbox viewbox = page.listViewbox[i];
+                CheckBox radioButton = viewbox.Child as CheckBox;
+                if (radioButton.IsChecked == true)
+                {
+                    count++;
+                }
+            }
+            switch (count)
+            {
+                case 0:
+                    message += $"На странице {currentPage + 1} не выбран не один правильный ответ\n";
+                    break;
+                case 1:
+                    message += $"На странице {currentPage + 1} выбран только один ответ\n";
+                    break;
+            }
+            
+        }
+
         public void deleteQuestion()
         {
             Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
@@ -258,6 +366,32 @@ namespace TestingSystem.Pages.Teachers
                     TbCurrentPage.Text = (currentPage + 1).ToString();
                     TbCountPage.Text = listPages.Count.ToString();
                 }
+                else
+                {
+                    Windows.SelectQuestionWindow window = new Windows.SelectQuestionWindow();
+                    window.Owner = App.dataClass.Window;
+                    window.ShowDialog();
+                    if (window.type != null)
+                    {
+                        listPages.RemoveAt(currentPage);
+                        switch (window.type)
+                        {
+                            case "Вопрос с одним ответом":
+                                listPages.Add(new OneAnswerQuestonPage());
+                                frameQuestion.Navigate(listPages[currentPage]);
+                                TbCurrentPage.Text = (currentPage + 1).ToString();
+                                TbCountPage.Text = listPages.Count.ToString();
+                                break;
+                            case "Вопрос с несколькими ответами":
+                                listPages.Add(new MultipleAnswersQuestionPage());
+                                frameQuestion.Navigate(listPages[currentPage]);
+                                TbCurrentPage.Text = (currentPage + 1).ToString();
+                                TbCountPage.Text = listPages.Count.ToString();
+                                break;
+                        }
+
+                    }
+                }
             }
             else
             {
@@ -269,7 +403,7 @@ namespace TestingSystem.Pages.Teachers
             }
             
         }
-
+        int countTransitions = 0;
         private void Exit_click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show("Вы уверены, что хотите выйти не сохранившиеся?", "Окно закрытия",
@@ -277,8 +411,11 @@ namespace TestingSystem.Pages.Teachers
                              MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                App.dataClass.Window.MainFrame.RemoveBackEntry();
-                App.dataClass.Window.NextPage(new SelectiActionTeacher());
+                for (int i = 0; i < countTransitions + 1; i++)
+                {
+                    App.dataClass.Window.MainFrame.RemoveBackEntry();
+                }
+                App.dataClass.Window.BackPage();
             }
         }
     }

@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="SelectQuestionWindow" Height="250" Width="400"
         WindowStartupLocation="CenterOwner">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

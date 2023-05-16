@@ -12,13 +12,13 @@ namespace TestingSystem.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Rating_Test
+    public partial class Question_Answer
     {
-        public int id { get; set; }
-        public Nullable<int> Id_Rating { get; set; }
-        public Nullable<int> Id_Test { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> Id_question { get; set; }
+        public Nullable<int> Id_Answer { get; set; }
     
-        public virtual Rating Rating { get; set; }
-        public virtual Test Test { get; set; }
+        public virtual Answer Answer { get; set; }
+        public virtual Question Question { get; set; }
     }
 }

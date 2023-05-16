@@ -18,15 +18,49 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <TextBlock Text="{Binding Name}"
-                                   FontSize="30"
-                                   />
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="600"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock 
+                                   FontSize="30">
+                                <Run Text="Название:"/>
+                                <Run Text="{Binding Name}"/>
+                            </TextBlock>
+                            <TextBlock FontSize="20">
+                                <Run Text="Дата и время создания:"/>
+                            </TextBlock>
+                            <TextBlock FontSize="20">
+                                <Run Text="Дата и время изменения:"/>
+                            </TextBlock>
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Column="1">
+                            <Button Content="Посмотреть баллы"
+                                    Margin="0,20,0,0"
+                                    Width="120"
+                                    Background="White"
+                                    Click="ViewPoints_Click"/>
+                            <Button Content="Изменить"
+                                    Margin="0,20,0,20"
+                                    Background="White"
+                                    Click="Edit_click"/>
+                            <Button Content="Удалить"
+                                    Margin="0,0,0,20"
+                                    Background="White"
+                                    Click="Delete_Click"/>
+                            
+                        </StackPanel>
+                        
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <Button x:Name="btnBack"
                 Content="Ввернуться"
-                Grid.Row="1"/>
+                Grid.Row="1"
+                Click="Back_Click"
+                Background="White"/>
     </Grid>
 </Page>

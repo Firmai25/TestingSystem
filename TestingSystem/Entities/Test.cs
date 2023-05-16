@@ -19,7 +19,7 @@ namespace TestingSystem.Entities
         {
             this.Parameters_Test = new HashSet<Parameters_Test>();
             this.Questions = new HashSet<Question>();
-            this.Rating_Test = new HashSet<Rating_Test>();
+            this.Ratings = new HashSet<Rating>();
         }
     
         public int Id { get; set; }
@@ -32,7 +32,7 @@ namespace TestingSystem.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Question> Questions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rating_Test> Rating_Test { get; set; }
+        public virtual ICollection<Rating> Ratings { get; set; }
         public virtual Teacher Teacher { get; set; }
     }
 }

@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         MinHeight="500"
         MinWidth="830">
-    <Grid>
+    <Grid Background="#cee3ff">
         <Frame x:Name="MainFrame"
                Source="Pages/SelectActions.xaml"
                NavigationUIVisibility="Hidden"/>

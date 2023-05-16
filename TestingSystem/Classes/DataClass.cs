@@ -13,5 +13,7 @@ namespace TestingSystem.Classes
         public MainWindow Window;
 
         public Teacher Teacher;
+
+        public Rating Rating;
     }
 }

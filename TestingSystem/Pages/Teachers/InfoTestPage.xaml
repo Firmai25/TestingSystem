@@ -7,6 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="InfoTestPage">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -50,17 +55,24 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <StackPanel Grid.Row="1">
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="120"/>
+            </Grid.RowDefinitions>
             <TextBlock Text="Описание теста"
                        FontSize="30"
                        HorizontalAlignment="Center"
-                       Margin="0,20,0,0"/>
-            <TextBox Height="230"
-                     Margin="20,20,20,0"
+                       VerticalAlignment="Center"/>
+            <TextBox Margin="20,0,20,0"
                      TextWrapping="Wrap"
                      AcceptsReturn="True"
-                     x:Name="TbDescription"/>
-            <Grid Margin="0,20,0,0">
+                     x:Name="TbDescription"
+                     Grid.Row="1"
+                     FontSize="20"/>
+            <Grid Margin="0,20,0,20"
+                  Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -94,6 +106,6 @@
                                TextAlignment="Center"/>
                 </Button>
             </Grid>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Page>

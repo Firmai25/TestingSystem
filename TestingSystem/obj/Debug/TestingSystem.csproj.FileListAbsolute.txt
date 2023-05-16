@@ -53,3 +53,7 @@ E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\SelectQuestionWindow.g.cs
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\SelectQuestionWindow.baml
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Students\QuestionPage\MultipleAnswersQuestionPage.g.cs
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Students\QuestionPage\MultipleAnswersQuestionPage.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\ScoresPassedTestPage.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\InfoUserWindow.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\ScoresPassedTestPage.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\InfoUserWindow.baml

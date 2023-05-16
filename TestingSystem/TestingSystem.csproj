@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>School.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -64,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Entities\Question_Answer.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Students\PassTestPage.xaml.cs">
       <DependentUpon>PassTestPage.xaml</DependentUpon>
     </Compile>
@@ -85,8 +91,14 @@
     <Compile Include="Pages\Teachers\QuestionPage\OneAnswerQuestonPage.xaml.cs">
       <DependentUpon>OneAnswerQuestonPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Teachers\ScoresPassedTestPage.xaml.cs">
+      <DependentUpon>ScoresPassedTestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Teachers\TestTeacherPage.xaml.cs">
       <DependentUpon>TestTeacherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\InfoUserWindow.xaml.cs">
+      <DependentUpon>InfoUserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ParametrsTestWindow.xaml.cs">
       <DependentUpon>ParametrsTestWindow.xaml</DependentUpon>
@@ -131,9 +143,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Rating.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Rating_Test.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Teacher.cs">
@@ -197,11 +206,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Teachers\ScoresPassedTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Teachers\SelectiActionTeacher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Teachers\TestTeacherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\InfoUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -278,6 +295,9 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Resource Include="School.ico" />
+    <Resource Include="Pictures\School.ico" />
+    <Resource Include="Pictures\Teacher.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

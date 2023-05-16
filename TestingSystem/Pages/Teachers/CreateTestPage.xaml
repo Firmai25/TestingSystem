@@ -7,12 +7,18 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CreateTestPage">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Border Background="White"/>
         <TextBox TextAlignment="Center"
                  FontSize="30"
                  x:Name="TbTestName">
@@ -41,33 +47,39 @@
                             <Setter Property="Background" 
                                     Value="{StaticResource CueBannerBrush}"/>
                         </Trigger>
-                        <Trigger Property="IsKeyboardFocused" 
+                        <!--<Trigger Property="IsKeyboardFocused" 
                                  Value="True">
                             <Setter Property="Background" 
                                     Value="White" />
-                        </Trigger>
+                        </Trigger>-->
                     </Style.Triggers>
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <StackPanel Grid.Row="1">
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
             <TextBlock Text="Описание теста"
                        FontSize="30"
                        HorizontalAlignment="Center"
-                       Margin="0,20,0,0"/>
-            <TextBox Height="230"
-                     Margin="20,20,20,0"
+                       VerticalAlignment="Center"/>
+            <TextBox Margin="20,0,20,20"
                      TextWrapping="Wrap"
                      AcceptsReturn="True"
-                     x:Name="TbDescription"/>
-            <Grid Margin="0,20,0,0">
+                     x:Name="TbDescription"
+                     FontSize="20"
+                     Grid.Row="1"/>
+            <Grid Grid.Row="2"
+                  Margin="0,0,0,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button Content="Отмена"
-                        Height="60"
                         FontSize="30"
                         Margin="20,0,20,0"
                         Grid.Column="0"
@@ -83,6 +95,6 @@
                         Margin="20,0,20,0"
                         Click="CreateTest_Click"/>
             </Grid>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Page>

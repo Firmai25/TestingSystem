@@ -25,7 +25,6 @@
     <Property Name="Sequence" Type="bit" />
     <Property Name="AbilityReturn" Type="bit" />
     <Property Name="TimeLimit" Type="int" />
-    <Property Name="NumberTortures" Type="int" />
   </EntityType>
   <EntityType Name="Question">
     <Key>
@@ -36,20 +35,24 @@
     <Property Name="Text_question" Type="nvarchar(max)" />
     <Property Name="id_type" Type="int" />
   </EntityType>
+  <EntityType Name="Question_Answer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_question" Type="int" />
+    <Property Name="Id_Answer" Type="int" />
+  </EntityType>
   <EntityType Name="Rating">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar(max)" />
     <Property Name="Name" Type="nvarchar(max)" />
-    <Property Name="Point" Type="int" />
-  </EntityType>
-  <EntityType Name="Rating_Test">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Id_Rating" Type="int" />
+    <Property Name="Patronymic" Type="nvarchar(max)" />
+    <Property Name="Scores" Type="float" />
+    <Property Name="NumberClass" Type="int" />
     <Property Name="Id_Test" Type="int" />
   </EntityType>
   <EntityType Name="Teacher">
@@ -79,7 +82,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="nvarchar(max)" />
   </EntityType>
-  <Association Name="FK_Answer_Question">
+  <Association Name="FK_Answer_Question1">
     <End Role="Question" Type="Self.Question" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -93,8 +96,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Parameters_Question_Question">
-    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+  <Association Name="FK_Parameters_Question_Question1">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Parameters_Question" Type="Self.Parameters_Question" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Question">
@@ -105,8 +110,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Parameters_Test_Test">
-    <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+  <Association Name="FK_Parameters_Test_Test1">
+    <End Role="Test" Type="Self.Test" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Parameters_Test" Type="Self.Parameters_Test" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Test">
@@ -117,8 +124,34 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Question_Test">
-    <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+  <Association Name="FK_Question_Answer_Answer">
+    <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+    <End Role="Question_Answer" Type="Self.Question_Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Question_Answer">
+        <PropertyRef Name="Id_Answer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_Answer_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Question_Answer" Type="Self.Question_Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Question_Answer">
+        <PropertyRef Name="Id_question" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_Test1">
+    <End Role="Test" Type="Self.Test" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Question" Type="Self.Question" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Test">
@@ -129,8 +162,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Question_Type_question">
-    <End Role="Type_question" Type="Self.Type_question" Multiplicity="0..1" />
+  <Association Name="FK_Question_Type_question1">
+    <End Role="Type_question" Type="Self.Type_question" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Question" Type="Self.Question" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Type_question">
@@ -141,32 +176,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Rating_Test_Rating1">
-    <End Role="Rating" Type="Self.Rating" Multiplicity="0..1" />
-    <End Role="Rating_Test" Type="Self.Rating_Test" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Rating">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Rating_Test">
-        <PropertyRef Name="Id_Rating" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Rating_Test_Test">
-    <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
-    <End Role="Rating_Test" Type="Self.Rating_Test" Multiplicity="*" />
+  <Association Name="FK_Rating_Test1">
+    <End Role="Test" Type="Self.Test" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Test">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Rating_Test">
+      <Dependent Role="Rating">
         <PropertyRef Name="Id_Test" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Test_Teacher1">
-    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+  <Association Name="FK_Test_Teacher">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Test" Type="Self.Test" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Teacher">
@@ -182,40 +209,44 @@
     <EntitySet Name="Parameters_Question" EntityType="Self.Parameters_Question" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Parameters_Test" EntityType="Self.Parameters_Test" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question_Answer" EntityType="Self.Question_Answer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Rating_Test" EntityType="Self.Rating_Test" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Type_question" EntityType="Self.Type_question" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
+    <AssociationSet Name="FK_Answer_Question1" Association="Self.FK_Answer_Question1">
       <End Role="Question" EntitySet="Question" />
       <End Role="Answer" EntitySet="Answer" />
     </AssociationSet>
-    <AssociationSet Name="FK_Parameters_Question_Question" Association="Self.FK_Parameters_Question_Question">
+    <AssociationSet Name="FK_Parameters_Question_Question1" Association="Self.FK_Parameters_Question_Question1">
       <End Role="Question" EntitySet="Question" />
       <End Role="Parameters_Question" EntitySet="Parameters_Question" />
     </AssociationSet>
-    <AssociationSet Name="FK_Parameters_Test_Test" Association="Self.FK_Parameters_Test_Test">
+    <AssociationSet Name="FK_Parameters_Test_Test1" Association="Self.FK_Parameters_Test_Test1">
       <End Role="Test" EntitySet="Test" />
       <End Role="Parameters_Test" EntitySet="Parameters_Test" />
     </AssociationSet>
-    <AssociationSet Name="FK_Question_Test" Association="Self.FK_Question_Test">
+    <AssociationSet Name="FK_Question_Answer_Answer" Association="Self.FK_Question_Answer_Answer">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="Question_Answer" EntitySet="Question_Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_Answer_Question" Association="Self.FK_Question_Answer_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Question_Answer" EntitySet="Question_Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_Test1" Association="Self.FK_Question_Test1">
       <End Role="Test" EntitySet="Test" />
       <End Role="Question" EntitySet="Question" />
     </AssociationSet>
-    <AssociationSet Name="FK_Question_Type_question" Association="Self.FK_Question_Type_question">
+    <AssociationSet Name="FK_Question_Type_question1" Association="Self.FK_Question_Type_question1">
       <End Role="Type_question" EntitySet="Type_question" />
       <End Role="Question" EntitySet="Question" />
     </AssociationSet>
-    <AssociationSet Name="FK_Rating_Test_Rating1" Association="Self.FK_Rating_Test_Rating1">
-      <End Role="Rating" EntitySet="Rating" />
-      <End Role="Rating_Test" EntitySet="Rating_Test" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Rating_Test_Test" Association="Self.FK_Rating_Test_Test">
+    <AssociationSet Name="FK_Rating_Test1" Association="Self.FK_Rating_Test1">
       <End Role="Test" EntitySet="Test" />
-      <End Role="Rating_Test" EntitySet="Rating_Test" />
+      <End Role="Rating" EntitySet="Rating" />
     </AssociationSet>
-    <AssociationSet Name="FK_Test_Teacher1" Association="Self.FK_Test_Teacher1">
+    <AssociationSet Name="FK_Test_Teacher" Association="Self.FK_Test_Teacher">
       <End Role="Teacher" EntitySet="Teacher" />
       <End Role="Test" EntitySet="Test" />
     </AssociationSet>

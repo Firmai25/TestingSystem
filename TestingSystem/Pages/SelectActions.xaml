@@ -12,6 +12,7 @@
             <Setter Property="Height" Value="80"/>
             <Setter Property="Width" Value="300"/>
             <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Background" Value="White"/>
         </Style>
     </Page.Resources>
     <Grid>
@@ -27,14 +28,17 @@
         </Grid.RowDefinitions>
         <Button Content="Пройти тест"
                 Grid.Column="1"
-                Click="OpenAllTests_Click"/>
+                Click="OpenAllTests_Click"              
+                Background="White"/>
         <Button Content="Я преподаватель"
                 Grid.Column="1"
                 Grid.Row="1"
-                Click="Teacher_click"/>
+                Click="Teacher_click"
+                Background="White"/>
         <Button Content="Выйти"
                 Grid.Column="1"
                 Grid.Row="2"
-                Click="Exit_click"/>
+                Click="Exit_click"
+                Background="White"/>
     </Grid>
 </Page>

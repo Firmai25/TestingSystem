@@ -5,8 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TestingSystem.Pages.Students"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="850"
       Title="AllTestsPage">
+
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -14,10 +20,11 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <ListView x:Name="lvAllTests"
-                  MouseDoubleClick="lvAllTests_MouseDoubleClick">
+                  MouseDoubleClick="lvAllTests_MouseDoubleClick"
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -27,7 +34,8 @@
                                 <Run Text="Название: "/>
                                 <Run Text="{Binding Name}"/>
                             </TextBlock>
-                            <TextBlock FontSize="25">
+                            <TextBlock FontSize="25"
+                                       TextTrimming="CharacterEllipsis">
                                 <Run Text="Описание:"/>
                                 <Run Text="{Binding Description}"
                                      x:Name="rDescription"/>

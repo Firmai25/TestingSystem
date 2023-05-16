@@ -13,10 +13,16 @@
             <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox FontSize="20"
-                 TextWrapping="Wrap"
-                 BorderThickness="3"
-                 x:Name="TbQuestion"/>
+        <Border BorderThickness="3"
+                BorderBrush="Gray"
+                Margin="5,0,5,0"
+                Background="White">    
+            <TextBlock FontSize="20"
+                       TextWrapping="Wrap"
+                       x:Name="TbQuestion"
+                       Margin="5"/>
+        </Border>
+        
         <Grid Grid.Row="1"
               x:Name="MainQuestionGrid">
             <Grid.ColumnDefinitions>

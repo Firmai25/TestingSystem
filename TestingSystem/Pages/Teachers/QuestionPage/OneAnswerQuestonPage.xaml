@@ -31,7 +31,8 @@
                     Grid.ColumnSpan="3"
                     Grid.Row="10"
                     Click="AddAnswer_click"
-                    x:Name="BtnAddAnswer"/>
+                    x:Name="BtnAddAnswer"
+                    Background="White"/>
         </Grid>
     </Grid>
 </Page>

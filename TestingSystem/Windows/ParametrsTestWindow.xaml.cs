@@ -51,7 +51,6 @@ namespace TestingSystem.Windows
             parameters.Sequence = SequenceQuestion();
             parameters.AbilityReturn = AbilityReturnQuestion();
             parameters.TimeLimit = TimeLimitTest();
-            parameters.NumberTortures = NumberTorturesTest();
             MessageBox.Show("Изменения успешно сохранены");
             Close();
         }
@@ -100,24 +99,6 @@ namespace TestingSystem.Windows
             }
         }
 
-        public int? NumberTorturesTest() 
-        {
-            if (RbCount.IsChecked == true)
-            {
-                if (TbCount.Text != "" && int.TryParse(TbCount.Text, out int result))
-                {
-                    return result;
-                }
-                else
-                {
-                    MessageBox.Show("Ограничение по времени должно быть целочисленным");
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
-        }
+        
     }
 }

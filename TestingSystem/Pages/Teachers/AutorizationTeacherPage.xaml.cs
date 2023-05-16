@@ -45,7 +45,7 @@ namespace TestingSystem.Pages.Teachers
             }
             else
             {
-                MessageBox.Show("Такой пользователь не найден");
+                MessageBox.Show("Пользователь с такими данными не найден");
             }
         }
     }

@@ -164,7 +164,7 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
 
         private void Delete_click(object sender, RoutedEventArgs e)
         {
-            if (countAnswer != 2)
+            if (countAnswer != 3)
             {
                 Button button = (Button)sender;
                 char charIndex = button.Name[button.Name.Length - 1];
@@ -178,7 +178,7 @@ namespace TestingSystem.Pages.Teachers.QuestionPage
             }
             else
             {
-                MessageBox.Show("Меньше двух не может быть");
+                MessageBox.Show("Меньше трёх не может быть");
             }
 
         }

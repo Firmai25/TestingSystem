@@ -19,7 +19,6 @@ namespace TestingSystem.Entities
         public Nullable<bool> Sequence { get; set; }
         public Nullable<bool> AbilityReturn { get; set; }
         public Nullable<int> TimeLimit { get; set; }
-        public Nullable<int> NumberTortures { get; set; }
     
         public virtual Test Test { get; set; }
     }

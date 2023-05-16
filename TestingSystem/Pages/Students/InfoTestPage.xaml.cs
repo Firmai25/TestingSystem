@@ -49,10 +49,6 @@ namespace TestingSystem.Pages.Students
             {
                 rTimeLimit.Text = parameters.TimeLimit.ToString() + " минут";
             }
-            if (parameters.NumberTortures != null)
-            {
-                rNumberTortures.Text = parameters.NumberTortures.ToString() + " попытки";
-            }
         }
 
         private void Back_click(object sender, RoutedEventArgs e)
@@ -62,7 +58,14 @@ namespace TestingSystem.Pages.Students
 
         private void StartTest_Click(object sender, RoutedEventArgs e)
         {
-            App.dataClass.Window.NextPage(new PassTestPage(test));
+            Windows.InfoUserWindow window = new Windows.InfoUserWindow(test);
+            window.Owner = App.dataClass.Window;
+            window.ShowDialog();
+            if (window.start == true) 
+            {
+                App.dataClass.Window.NextPage(new PassTestPage(test));
+
+            }
         }
     }
 }

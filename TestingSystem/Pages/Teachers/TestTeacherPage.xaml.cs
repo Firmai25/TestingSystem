@@ -21,11 +21,13 @@ namespace TestingSystem.Pages.Teachers
     /// </summary>
     public partial class TestTeacherPage : Page
     {
-        public TestTeacherPage(Teacher teacher)
+        Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
+        Teacher teacher;
+        public TestTeacherPage(Teacher currentTeacher)
         {
             InitializeComponent();
-            Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
-            lvTests.ItemsSource = db.Tests.Where(b => teacher.Id == b.id_Teacher).ToList();
+            teacher = currentTeacher;
+            lvTests.ItemsSource = db.Tests.Where(b => currentTeacher.Id == b.id_Teacher).ToList();
         }
 
         private void lvTests_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -36,5 +38,39 @@ namespace TestingSystem.Pages.Teachers
                 App.dataClass.Window.NextPage(new InfoTestPage(test));
             }
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            App.dataClass.Window.BackPage();
+        }
+
+        private void Edit_click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            Test test = button.DataContext as Test;
+            App.dataClass.Window.NextPage(new InfoTestPage(test));
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Вы уверены, что хотите удалиль этот тест?", "Окно закрытия",
+                             MessageBoxButton.YesNo,
+                             MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                Button button = sender as Button;
+                Test test = button.DataContext as Test;
+                db.Tests.Remove(test);
+                db.SaveChanges();
+                lvTests.ItemsSource = db.Tests.Where(b => teacher.Id == b.id_Teacher).ToList();
+            }
+        }
+
+        private void ViewPoints_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            Test test = btn.DataContext as Test;
+            App.dataClass.Window.NextPage(new ScoresPassedTestPage(test));
+        }
     }
-}
+}   

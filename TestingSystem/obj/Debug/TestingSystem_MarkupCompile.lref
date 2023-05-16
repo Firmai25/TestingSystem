@@ -17,4 +17,6 @@ FE:\Repos\TestingSystem\TestingSystem\Pages\Teachers\TestTeacherPage.xaml;;
 FE:\Repos\TestingSystem\TestingSystem\Windows\ParametrsTestWindow.xaml;;
 FE:\Repos\TestingSystem\TestingSystem\Windows\SelectQuestionWindow.xaml;;
 FE:\Repos\TestingSystem\TestingSystem\Pages\Students\QuestionPage\MultipleAnswersQuestionPage.xaml;;
+FE:\Repos\TestingSystem\TestingSystem\Pages\Teachers\ScoresPassedTestPage.xaml;;
+FE:\Repos\TestingSystem\TestingSystem\Windows\InfoUserWindow.xaml;;
 

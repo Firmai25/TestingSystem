@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,17 +48,21 @@ namespace TestingSystem.Pages.Students
             TbCountPage.Text = listQuestion.Count().ToString();
             CheckParametrs(currentTest);
         }
-        DispatcherTimer timer = new DispatcherTimer();
-        List<Page> listPages = new List<Page>();
 
+        DispatcherTimer timer = new DispatcherTimer();
+        bool timerActual = false;
+        List<Page> listPages = new List<Page>();
+        bool backActual = true;
+        
         public void CheckParametrs(Test test)
         {
             Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
             Parameters_Test parameters = db.Parameters_Test.Where(b => b.Id_Test == test.Id).FirstOrDefault();
             if (parameters.Sequence == false)
             {
+                int count = listPages.Count;
                 List<Page> newlistPage = new List<Page>();
-                for (int i = 0; i < listPages.Count; i++)
+                for (int i = 0; i < count; i++)
                 {
                     Random rnd = new Random();
                     int current = rnd.Next(listPages.Count);
@@ -65,18 +70,22 @@ namespace TestingSystem.Pages.Students
                     listPages.RemoveAt(current);
                 }
                 listPages = newlistPage;
+                frameQuestion.Navigate(listPages[0]);
             }
             if (parameters.AbilityReturn == false)
             {
                 btnBack.IsEnabled = false;
+                backActual = false;
             }
             if (parameters.TimeLimit != null)
             {
                 gridTime.Visibility = Visibility.Visible;
                 timeMin = (int)parameters.TimeLimit;
                 timer.Tick += new EventHandler(dispatcherTimer_Tick);
-                timer.Interval = new TimeSpan(0, 5, 0);
+                timer.Interval = new TimeSpan(0, 0, 1);
                 timer.Start();
+                tbTime.Text = $"{parameters.TimeLimit} минут 0 секунд";
+                timerActual = true;
             }
         }
 
@@ -85,16 +94,18 @@ namespace TestingSystem.Pages.Students
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            if (timeMin != 0)
+            if (timeMin >= 0)
             {
                 if (timeSeconds != 0)
                 {
                     timeSeconds--;
+                    tbTime.Text = $"{timeMin} минут {timeSeconds} секунд";
                 }
                 else
                 {
                     timeMin--;
                     timeSeconds = 59;
+                    tbTime.Text = $"{timeMin} минут {timeSeconds} секунд";
                 }
             }
             else
@@ -103,6 +114,8 @@ namespace TestingSystem.Pages.Students
                 timer.Stop();
             }
         }
+
+        
 
         private void BackPage_click(object sender, RoutedEventArgs e)
         {
@@ -122,7 +135,10 @@ namespace TestingSystem.Pages.Students
         {
             countTransitions++;
             currentQuestion++;
-            btnBack.IsEnabled = true;
+            if (backActual)
+            {
+                btnBack.IsEnabled = true;
+            }           
             frameQuestion.Navigate(listPages[currentQuestion]);
             if (currentQuestion == listQuestion.Count() - 1)
             {
@@ -138,6 +154,10 @@ namespace TestingSystem.Pages.Students
                                           MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
+                if (timerActual)
+                {
+                    timer.Stop();
+                }
                 for (int i = 0; i < countTransitions; i++)
                 {
                     App.dataClass.Window.MainFrame.RemoveBackEntry();
@@ -153,6 +173,10 @@ namespace TestingSystem.Pages.Students
                              MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
+                if (timerActual)
+                {
+                    timer.Stop();
+                }
                 endTest();
             }
         }
@@ -176,6 +200,15 @@ namespace TestingSystem.Pages.Students
                 }
             }
             MessageBox.Show($"Количество баллов {countPoint}");
+            Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
+            Rating rating = db.Ratings.Where(b=> b.Id == App.dataClass.Rating.Id).FirstOrDefault();
+            rating.Scores = countPoint;
+            db.SaveChanges();
+            for (int i = 0; i < countTransitions; i++)
+            {
+                App.dataClass.Window.MainFrame.RemoveBackEntry();
+            }
+            App.dataClass.Window.BackPage();
         }
         public void CheckOnePage(OneAnswerQuestonPage page)
         {

@@ -7,6 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="InfoTestPage">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -17,16 +22,17 @@
         <TextBlock Text="{Binding Name}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   FontSize="20"/>
+                   FontSize="30"/>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel x:Name="spParametrs">
+            <StackPanel x:Name="spParametrs"
+                        Margin="20,0,0,0">
                 <TextBlock Text="Параметры"
                            TextAlignment="Center"
-                           FontSize="20"/>
+                           FontSize="30"/>
                 <TextBlock>
                     <Run Text="Порядок вопросов:"/>
                     <Run x:Name="rSequence"
@@ -48,6 +54,21 @@
                          Text="Нет"/>
                 </TextBlock>
             </StackPanel>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Описание теста"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontSize="30"/>
+                <TextBlock Text="{Binding Description}"
+                           Grid.Row="1"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Margin="20,0,20,0"/>
+            </Grid>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -56,10 +77,12 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button Content="Назад"
-                    Click="Back_click"/>
+                    Click="Back_click"
+                    Margin="20,15,20,15"/>
             <Button Content="Начать"
                     Grid.Column="2"
-                    Click="StartTest_Click"/>
+                    Click="StartTest_Click"
+                    Margin="20,15,20,15"/>
         </Grid>
     </Grid>
 </Page>

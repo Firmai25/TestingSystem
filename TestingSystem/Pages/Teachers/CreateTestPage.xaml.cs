@@ -42,7 +42,7 @@ namespace TestingSystem.Pages.Teachers
 
         private void CreateTest_Click(object sender, RoutedEventArgs e)
         {
-            if(TbTestName.Text != "")
+            if(TbTestName.Text.Trim() != "")
             {
                 Test test = new Test()
                 {

@@ -5,87 +5,90 @@
       <EntityTypeMapping TypeName="Cherepanov_TestingModel.Answer">
         <MappingFragment StoreEntitySet="Answer">
           <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Text_Answer" ColumnName="Text_Answer" />
           <ScalarProperty Name="Correct" ColumnName="Correct" />
+          <ScalarProperty Name="Text_Answer" ColumnName="Text_Answer" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parameters_Question">
       <EntityTypeMapping TypeName="Cherepanov_TestingModel.Parameters_Question">
         <MappingFragment StoreEntitySet="Parameters_Question">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Id_question" ColumnName="Id_question" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parameters_Test">
       <EntityTypeMapping TypeName="Cherepanov_TestingModel.Parameters_Test">
         <MappingFragment StoreEntitySet="Parameters_Test">
-          <ScalarProperty Name="NumberTortures" ColumnName="NumberTortures" />
           <ScalarProperty Name="TimeLimit" ColumnName="TimeLimit" />
           <ScalarProperty Name="AbilityReturn" ColumnName="AbilityReturn" />
           <ScalarProperty Name="Sequence" ColumnName="Sequence" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Id_Test" ColumnName="Id_Test" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Questions">
       <EntityTypeMapping TypeName="Cherepanov_TestingModel.Question">
         <MappingFragment StoreEntitySet="Question">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Id_Test" ColumnName="Id_Test" />
-          <ScalarProperty Name="Text_question" ColumnName="Text_question" />
           <ScalarProperty Name="id_type" ColumnName="id_type" />
+          <ScalarProperty Name="Text_question" ColumnName="Text_question" />
+          <ScalarProperty Name="Id_Test" ColumnName="Id_Test" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Question_Answer">
+      <EntityTypeMapping TypeName="Cherepanov_TestingModel.Question_Answer">
+        <MappingFragment StoreEntitySet="Question_Answer">
+          <ScalarProperty Name="Id_Answer" ColumnName="Id_Answer" />
+          <ScalarProperty Name="Id_question" ColumnName="Id_question" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Ratings">
       <EntityTypeMapping TypeName="Cherepanov_TestingModel.Rating">
         <MappingFragment StoreEntitySet="Rating">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Point" ColumnName="Point" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Rating_Test">
-      <EntityTypeMapping TypeName="Cherepanov_TestingModel.Rating_Test">
-        <MappingFragment StoreEntitySet="Rating_Test">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="Id_Rating" ColumnName="Id_Rating" />
           <ScalarProperty Name="Id_Test" ColumnName="Id_Test" />
+          <ScalarProperty Name="NumberClass" ColumnName="NumberClass" />
+          <ScalarProperty Name="Scores" ColumnName="Scores" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Teachers">
       <EntityTypeMapping TypeName="Cherepanov_TestingModel.Teacher">
         <MappingFragment StoreEntitySet="Teacher">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Surname" ColumnName="Surname" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-          <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tests">
       <EntityTypeMapping TypeName="Cherepanov_TestingModel.Test">
         <MappingFragment StoreEntitySet="Test">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="id_Teacher" ColumnName="id_Teacher" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="id_Teacher" ColumnName="id_Teacher" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Type_question">
       <EntityTypeMapping TypeName="Cherepanov_TestingModel.Type_question">
         <MappingFragment StoreEntitySet="Type_question">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
