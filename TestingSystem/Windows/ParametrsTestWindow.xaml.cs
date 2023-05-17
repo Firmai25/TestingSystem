@@ -51,7 +51,6 @@ namespace TestingSystem.Windows
             parameters.Sequence = SequenceQuestion();
             parameters.AbilityReturn = AbilityReturnQuestion();
             parameters.TimeLimit = TimeLimitTest();
-            MessageBox.Show("Изменения успешно сохранены");
             Close();
         }
 

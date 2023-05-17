@@ -8,6 +8,17 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OneAnswerQuestonPage">
 
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>

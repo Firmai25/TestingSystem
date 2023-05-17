@@ -8,12 +8,18 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SelectiActionTeacher">
 
+
     <Page.Resources>
         <Style TargetType="Button">
             <Setter Property="Height" Value="80"/>
             <Setter Property="Width" Value="300"/>
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="Background" Value="White"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
         </Style>
     </Page.Resources>
     <Grid>

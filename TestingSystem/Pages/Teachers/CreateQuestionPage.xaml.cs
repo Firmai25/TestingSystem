@@ -155,22 +155,37 @@ namespace TestingSystem.Pages.Teachers
         {
             if (Checkfield())
             {
+                Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
+                Test currentTest = db.Tests.Where(b => b.Id == test.Id).FirstOrDefault();
                 deleteQuestion();
-                for (int i = 0; i < listPages.Count; i++)
+                if (listPages.Count > 0)
                 {
-                    var page = listPages[i];
-                    if (page.Title == "OneAnswerQuestonPage")
+                    for (int i = 0; i < listPages.Count; i++)
                     {
-                        OneAnswerQuestonPage pageOne = page as OneAnswerQuestonPage;
-                        SaveOnePageAnswer(pageOne);
+                        var page = listPages[i];
+                        if (page.Title == "OneAnswerQuestonPage")
+                        {
+                            OneAnswerQuestonPage pageOne = page as OneAnswerQuestonPage;
+                            SaveOnePageAnswer(pageOne);
+                        }
+                        if (page.Title == "MultipleAnswersQuestionPage")
+                        {
+                            MultipleAnswersQuestionPage pageMulti = page as MultipleAnswersQuestionPage;
+                            SaveMultiPageAnswer(pageMulti);
+                        }
                     }
-                    if (page.Title == "MultipleAnswersQuestionPage")
-                    {
-                        MultipleAnswersQuestionPage pageMulti = page as MultipleAnswersQuestionPage;
-                        SaveMultiPageAnswer(pageMulti);
-                    }
+                    currentTest.VisibleTest = true;
+                    currentTest.DateEdit = DateTime.Now;
+                    db.SaveChanges();
+                    MessageBox.Show("Сохранение прошло успешно");
+                    
                 }
-                MessageBox.Show("Сохранение прошло успешно");
+                else
+                {
+                    currentTest.VisibleTest = false;
+                    db.SaveChanges();
+                }
+                
             }
             else
             {
@@ -361,6 +376,7 @@ namespace TestingSystem.Pages.Teachers
             {
                 if(listPages.Count > 1)
                 {
+                    countTransitions++;
                     listPages.RemoveAt(currentPage);
                     frameQuestion.Navigate(listPages[currentPage]);
                     TbCurrentPage.Text = (currentPage + 1).ToString();
@@ -373,6 +389,7 @@ namespace TestingSystem.Pages.Teachers
                     window.ShowDialog();
                     if (window.type != null)
                     {
+                        countTransitions++;
                         listPages.RemoveAt(currentPage);
                         switch (window.type)
                         {
@@ -395,6 +412,7 @@ namespace TestingSystem.Pages.Teachers
             }
             else
             {
+                countTransitions++;
                 listPages.RemoveAt(currentPage);
                 currentPage--;
                 frameQuestion.Navigate(listPages[currentPage]);
@@ -406,7 +424,7 @@ namespace TestingSystem.Pages.Teachers
         int countTransitions = 0;
         private void Exit_click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Вы уверены, что хотите выйти не сохранившиеся?", "Окно закрытия",
+            var result = MessageBox.Show("Вы уверены, что хотите выйти", "Окно закрытия",
                              MessageBoxButton.YesNo,
                              MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)

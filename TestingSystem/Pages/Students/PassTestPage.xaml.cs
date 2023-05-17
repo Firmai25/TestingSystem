@@ -44,6 +44,10 @@ namespace TestingSystem.Pages.Students
                     listPages.Add(new MultipleAnswersQuestionPage(listQuestion[i]));
                 }
             }
+            if (listQuestion.Count == 1)
+            {
+                BtnNext.IsEnabled = false;
+            }
             frameQuestion.Navigate(listPages[0]);
             TbCountPage.Text = listQuestion.Count().ToString();
             CheckParametrs(currentTest);

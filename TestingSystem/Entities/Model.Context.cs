@@ -34,5 +34,6 @@ namespace TestingSystem.Entities
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
         public virtual DbSet<Type_question> Type_question { get; set; }
+        public virtual DbSet<Type_Teacher> Type_Teacher { get; set; }
     }
 }

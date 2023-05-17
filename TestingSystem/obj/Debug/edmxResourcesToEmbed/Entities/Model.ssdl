@@ -65,6 +65,7 @@
     <Property Name="Patronymic" Type="nvarchar(max)" />
     <Property Name="Login" Type="nvarchar(max)" />
     <Property Name="Password" Type="nvarchar(max)" />
+    <Property Name="Id_Type" Type="int" />
   </EntityType>
   <EntityType Name="Test">
     <Key>
@@ -74,6 +75,9 @@
     <Property Name="Name" Type="nvarchar(max)" />
     <Property Name="id_Teacher" Type="int" />
     <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="VisibleTest" Type="bit" />
+    <Property Name="DateCreate" Type="datetime" />
+    <Property Name="DateEdit" Type="datetime" />
   </EntityType>
   <EntityType Name="Type_question">
     <Key>
@@ -81,6 +85,13 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Type_Teacher">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="FK_Answer_Question1">
     <End Role="Question" Type="Self.Question" Multiplicity="0..1">
@@ -190,6 +201,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Teacher_Type_Teacher">
+    <End Role="Type_Teacher" Type="Self.Type_Teacher" Multiplicity="0..1" />
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Teacher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="Id_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Test_Teacher">
     <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -214,6 +237,7 @@
     <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Type_question" EntityType="Self.Type_question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type_Teacher" EntityType="Self.Type_Teacher" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Answer_Question1" Association="Self.FK_Answer_Question1">
       <End Role="Question" EntitySet="Question" />
       <End Role="Answer" EntitySet="Answer" />
@@ -245,6 +269,10 @@
     <AssociationSet Name="FK_Rating_Test1" Association="Self.FK_Rating_Test1">
       <End Role="Test" EntitySet="Test" />
       <End Role="Rating" EntitySet="Rating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacher_Type_Teacher" Association="Self.FK_Teacher_Type_Teacher">
+      <End Role="Type_Teacher" EntitySet="Type_Teacher" />
+      <End Role="Teacher" EntitySet="Teacher" />
     </AssociationSet>
     <AssociationSet Name="FK_Test_Teacher" Association="Self.FK_Test_Teacher">
       <End Role="Teacher" EntitySet="Teacher" />

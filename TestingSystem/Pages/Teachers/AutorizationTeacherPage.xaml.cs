@@ -25,8 +25,6 @@ namespace TestingSystem.Pages.Teachers
         public AutorizationTeacherPage()
         {
             InitializeComponent();
-            TbLogin.Text = "Firmai";
-            TbPassword.Text = "123";
         }
 
         private void Back_click(object sender, RoutedEventArgs e)
@@ -36,16 +34,39 @@ namespace TestingSystem.Pages.Teachers
 
         private void Autorization_Click(object sender, RoutedEventArgs e)
         {
-            Teacher teacher = db.Teachers.Where(b => b.Login == TbLogin.Text && b.Password == TbPassword.Text).FirstOrDefault();
+            Teacher teacher = db.Teachers.Where(b => b.Login == TbLogin.Text.Trim() && b.Password == TbPassword.Password.Trim()).FirstOrDefault();
             if (teacher != null)
             {
-                SelectiActionTeacher selectiAction = new SelectiActionTeacher();
-                App.dataClass.Teacher = teacher;
-                App.dataClass.Window.NextPage(selectiAction);
+                switch (teacher.Id_Type)
+                {
+                    case 1:
+                        AdministratorsPage.SelectActionAdministrator selectiActionAdmin = 
+                                        new AdministratorsPage.SelectActionAdministrator();
+                        App.dataClass.Teacher = teacher;
+                        App.dataClass.Window.NextPage(selectiActionAdmin);
+                        break;
+                    case 2:
+                        SelectiActionTeacher selectiAction = new SelectiActionTeacher();
+                        App.dataClass.Teacher = teacher;
+                        App.dataClass.Window.NextPage(selectiAction);
+                        break;
+                }
             }
             else
             {
                 MessageBox.Show("Пользователь с такими данными не найден");
+            }
+        }
+
+        private void TbPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (TbPassword.Password != "")
+            {
+                lbPassword.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                lbPassword.Visibility = Visibility.Visible;
             }
         }
     }

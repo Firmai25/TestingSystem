@@ -21,11 +21,12 @@ namespace TestingSystem.Pages.Teachers
     /// </summary>
     public partial class TestTeacherPage : Page
     {
-        Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
+        
         Teacher teacher;
         public TestTeacherPage(Teacher currentTeacher)
         {
             InitializeComponent();
+            Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
             teacher = currentTeacher;
             lvTests.ItemsSource = db.Tests.Where(b => currentTeacher.Id == b.id_Teacher).ToList();
         }
@@ -58,10 +59,13 @@ namespace TestingSystem.Pages.Teachers
                              MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
+                Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
                 Button button = sender as Button;
                 Test test = button.DataContext as Test;
+                test = db.Tests.Where(b => b.Id == test.Id).FirstOrDefault();
                 db.Tests.Remove(test);
                 db.SaveChanges();
+
                 lvTests.ItemsSource = db.Tests.Where(b => teacher.Id == b.id_Teacher).ToList();
             }
         }

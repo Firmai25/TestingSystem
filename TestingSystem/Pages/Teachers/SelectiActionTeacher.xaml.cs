@@ -32,10 +32,6 @@ namespace TestingSystem.Pages.Teachers
             App.dataClass.Window.NextPage(selectActions);
         }
 
-        private void AllCreateTest_click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void CreateTest_Click(object sender, RoutedEventArgs e)
         {
@@ -45,8 +41,7 @@ namespace TestingSystem.Pages.Teachers
 
         private void Back_click(object sender, RoutedEventArgs e)
         {
-            App.dataClass.Window.MainFrame.RemoveBackEntry();
-            App.dataClass.Window.NextPage(new SelectActions());
+            App.dataClass.Window.BackPage();
         }
 
         private void OpenAllCreateTest_Click(object sender, RoutedEventArgs e)

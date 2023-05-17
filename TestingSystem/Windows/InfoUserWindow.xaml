@@ -5,19 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingSystem.Windows"
         mc:Ignorable="d"
-        Title="InfoUserWindow" Height="250" Width="400"
-        WindowStartupLocation="CenterOwner">
+        Height="250" Width="400"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="0,0,20,0"/>
+            <Setter Property="Margin" Value="0,0,15,0"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="FontSize" Value="20"/>
         </Style>
+        <Style TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
     </Window.Resources>
-    <Grid>
+    <Grid Background="#cee3ff">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition/>
@@ -54,10 +63,14 @@
                  Text="{Binding NumberClass}"/>
         <Button Content="Отмена"
                 Grid.Row="6"
-                Click="Cancel_Click"/>
+                Click="Cancel_Click"
+                Background="White"
+                Margin="5"/>
         <Button Content="Начать"
                 Grid.Row="6"
                 Grid.Column="1"
-                Click="Start_Click"/>
+                Click="Start_Click"
+                Background="White"
+                Margin="5"/>
     </Grid>
 </Window>

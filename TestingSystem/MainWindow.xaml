@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingSystem"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="850"
+        Title="Тестовая оболочка"
+        Height="700" Width="850"
         WindowStartupLocation="CenterScreen"
-        MinHeight="500"
+        MinHeight="600"
         MinWidth="830">
     <Grid Background="#cee3ff">
         <Frame x:Name="MainFrame"

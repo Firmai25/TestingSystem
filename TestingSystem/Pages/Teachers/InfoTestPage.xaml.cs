@@ -27,7 +27,7 @@ namespace TestingSystem.Pages.Teachers
         public InfoTestPage(Test currentTest)
         {
             InitializeComponent();
-            this.test = db.Tests.Where(b=> b.Id == currentTest.Id).FirstOrDefault();
+            test = db.Tests.Where(b=> b.Id == currentTest.Id).FirstOrDefault();
             TbTestName.Text = test.Name;
             TbDescription.Text = test.Description;
             parameters = db.Parameters_Test.Where(b => b.Id_Test == test.Id).FirstOrDefault();
@@ -40,16 +40,35 @@ namespace TestingSystem.Pages.Teachers
 
         private void EdutQuestion_Click(object sender, RoutedEventArgs e)
         {
-            App.dataClass.Window.NextPage(new CreateQuestionPage(test, true));
+            var quest = db.Questions.Where(b=> b.Id_Test == test.Id).ToList();
+            if (quest.Count > 0)
+            {
+                App.dataClass.Window.NextPage(new CreateQuestionPage(test, true));
+            }
+            else
+            {
+                CreateQuestionPage page = new CreateQuestionPage(test, false);
+                if (!page.Cancel)
+                {
+                    App.dataClass.Window.NextPage(page);
+                }
+            }
+            
         }
 
         private void SaveEditTest_Click(object sender, RoutedEventArgs e)
         {
             if (TbTestName.Text != "")
             {
+                Parameters_Test parameters_Test = db.Parameters_Test.Where(b => b.Id_Test == test.Id).FirstOrDefault();
+                parameters_Test.TimeLimit = parameters.TimeLimit;
+                parameters_Test.Sequence = parameters.Sequence;
+                parameters.AbilityReturn = parameters.AbilityReturn;
+                test.DateEdit = DateTime.Now;
                 test.Name = TbTestName.Text;
                 test.Description = TbDescription.Text;
                 db.SaveChanges();
+                MessageBox.Show("Сохранение прошло успешно");
             }
             else
             {

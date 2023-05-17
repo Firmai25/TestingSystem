@@ -10,10 +10,15 @@
     <Page.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="White"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
         </Style>
     </Page.Resources>
 
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition/>
@@ -25,48 +30,70 @@
                    FontSize="30"/>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="400"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel x:Name="spParametrs"
+            
+            <Grid x:Name="spParametrs"
                         Margin="20,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Background="White"
+                        Margin="0,10,5,10"
+                        CornerRadius="3"
+                        Grid.RowSpan="10"/>
                 <TextBlock Text="Параметры"
                            TextAlignment="Center"
                            FontSize="30"/>
-                <TextBlock>
+                <TextBlock FontSize="20"
+                           Grid.Row="1"
+                           Margin="5,0,0,0">
                     <Run Text="Порядок вопросов:"/>
                     <Run x:Name="rSequence"
                          Text="Последовательно"/>
                 </TextBlock>
-                <TextBlock>
+                <TextBlock Grid.Row="2"
+                           FontSize="20"
+                           TextWrapping="Wrap"
+                           Margin="5,0,0,0">
                     <Run Text="Возращаться к предыдущему вопросу:"/>
                     <Run x:Name="rAbilityReturn"
                          Text="Возможно"/>
                 </TextBlock>
-                <TextBlock>
+                <TextBlock Grid.Row="3"
+                           FontSize="20"
+                           Margin="5,0,0,0">
                     <Run Text="Ограничение по времени:"/>
                     <Run x:Name="rTimeLimit"
                          Text="Нет"/>
                 </TextBlock>
-                <TextBlock>
-                    <Run Text="Ограничение по попыткам:"/>
-                    <Run x:Name="rNumberTortures"
-                         Text="Нет"/>
-                </TextBlock>
-            </StackPanel>
-            <Grid Grid.Column="1">
+            </Grid>
+            <Grid Grid.Column="1"
+                  Margin="0,0,20,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <Border Background="White"
+                        Margin="0,10,5,10"
+                        CornerRadius="3"
+                        Grid.RowSpan="10"/>
                 <TextBlock Text="Описание теста"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="30"/>
                 <TextBlock Text="{Binding Description}"
                            Grid.Row="1"
-                           TextAlignment="Center"
                            TextWrapping="Wrap"
+                           FontSize="20"
                            Margin="20,0,20,0"/>
             </Grid>
         </Grid>
@@ -78,11 +105,13 @@
             </Grid.ColumnDefinitions>
             <Button Content="Назад"
                     Click="Back_click"
-                    Margin="20,15,20,15"/>
+                    Margin="20,15,20,15"
+                    FontSize="20"/>
             <Button Content="Начать"
                     Grid.Column="2"
                     Click="StartTest_Click"
-                    Margin="20,15,20,15"/>
+                    Margin="20,15,20,15"
+                    FontSize="20"/>
         </Grid>
     </Grid>
 </Page>

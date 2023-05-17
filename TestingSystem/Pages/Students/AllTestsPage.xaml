@@ -11,17 +11,72 @@
     <Page.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="White"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
         </Style>
     </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
             <RowDefinition/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Background="White"/>
+            <TextBox FontSize="25"
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     TextChanged="SearchByName_TextChanged"
+                     x:Name="tbSearch">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Поиск по название" Foreground="Gray" FontSize="20"/>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <ComboBox Name="cmbFilt"
+                      Grid.Column="1"
+                      FontSize="20"
+                      HorizontalContentAlignment="Left"
+                      VerticalContentAlignment="Center"
+                      SelectionChanged="cmbFilt_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Surname}"/>
+                            <Run Text="{Binding Name}"/>
+                            <Run Text="{Binding Patronymic}"/>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
         <ListView x:Name="lvAllTests"
                   MouseDoubleClick="lvAllTests_MouseDoubleClick"
-                  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                  Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid >
@@ -50,15 +105,19 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
+                            <TextBlock FontSize="25">
+                                <Run Text="Создан:"/>
+                                <Run Text="{Binding Teacher.Surname}"/>
+                                <Run Text="{Binding Teacher.Name}"/>
+                                <Run Text="{Binding Teacher.Patronymic}"/>
+                            </TextBlock>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <Button Content="Ввернуться"
-                Grid.Row="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
+                Grid.Row="2"
                 FontSize="35"
                 Click="Back_click"/>
     </Grid>

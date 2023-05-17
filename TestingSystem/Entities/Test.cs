@@ -26,6 +26,9 @@ namespace TestingSystem.Entities
         public string Name { get; set; }
         public Nullable<int> id_Teacher { get; set; }
         public string Description { get; set; }
+        public Nullable<bool> VisibleTest { get; set; }
+        public Nullable<System.DateTime> DateCreate { get; set; }
+        public Nullable<System.DateTime> DateEdit { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Parameters_Test> Parameters_Test { get; set; }

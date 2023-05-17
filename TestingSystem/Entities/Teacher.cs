@@ -26,7 +26,9 @@ namespace TestingSystem.Entities
         public string Patronymic { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public Nullable<int> Id_Type { get; set; }
     
+        public virtual Type_Teacher Type_Teacher { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Test> Tests { get; set; }
     }

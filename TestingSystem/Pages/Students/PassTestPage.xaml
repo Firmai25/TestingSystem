@@ -10,6 +10,11 @@
     <Page.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="White"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
         </Style>
     </Page.Resources>
 

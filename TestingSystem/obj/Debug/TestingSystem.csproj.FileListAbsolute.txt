@@ -57,3 +57,9 @@ E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\ScoresPassedTestPa
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\InfoUserWindow.g.cs
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\ScoresPassedTestPage.baml
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\InfoUserWindow.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AdministratorsPage\SelectActionAdministrator.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AdministratorsPage\SelectActionAdministrator.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AdministratorsPage\AllUsersPage.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AdministratorsPage\AllUsersPage.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\CreateUserWindows.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\CreateUserWindows.baml

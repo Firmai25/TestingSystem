@@ -25,7 +25,8 @@ namespace TestingSystem.Pages.Students
         public AllTestsPage()
         {
             InitializeComponent();
-            lvAllTests.ItemsSource = db.Tests.ToList();
+            GenerationListTest();
+            cmbFilt.ItemsSource = db.Teachers.ToList();
         }
 
         private void Back_click(object sender, RoutedEventArgs e)
@@ -40,6 +41,46 @@ namespace TestingSystem.Pages.Students
                 Test test = lvAllTests.SelectedItem as Test;
                 App.dataClass.Window.NextPage(new InfoTestPage(test));
             }
+        }
+
+        public void GenerationListTest()
+        {
+            List<Test> testList = db.Tests.Where(b=> b.VisibleTest == true).ToList();
+            testList = FiltTest(testList);
+            testList = SearchTest(testList);
+            lvAllTests.ItemsSource = testList;
+
+        }
+
+        public List<Test> FiltTest(List<Test> listTest)
+        {
+            Teacher teacher = cmbFilt.SelectedItem as Teacher;
+            if (teacher != null)
+            {
+                listTest = listTest.Where(b => b.id_Teacher == teacher.Id).ToList();
+            }
+
+            return listTest;
+        }
+
+        public List<Test> SearchTest(List<Test> listTest)
+        {
+            if (tbSearch.Text != "")
+            {
+                listTest = listTest.Where(b=> b.Name.StartsWith(tbSearch.Text)).ToList();
+            }
+            return listTest;
+
+        }
+
+        private void SearchByName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            GenerationListTest();
+        }
+
+        private void cmbFilt_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            GenerationListTest();
         }
     }
 }

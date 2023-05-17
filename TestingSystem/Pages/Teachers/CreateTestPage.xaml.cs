@@ -47,8 +47,11 @@ namespace TestingSystem.Pages.Teachers
                 Test test = new Test()
                 {
                     Description = TbDescription.Text,
-                    id_Teacher = 1,
-                    Name = TbTestName.Text
+                    id_Teacher = App.dataClass.Teacher.Id,
+                    Name = TbTestName.Text,
+                    VisibleTest = false,
+                    DateCreate = DateTime.Now,
+                    DateEdit = DateTime.Now,
                 };
                 db.Tests.Add(test);
                 db.SaveChanges();

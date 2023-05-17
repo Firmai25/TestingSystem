@@ -32,17 +32,22 @@
                        FontSize="30"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"/>
+            <Border Grid.Row="1"
+                    Background="White"
+                    Height="40"
+                    Margin="0,0,20,0"/>
             <TextBox x:Name="TbLogin"
                      Grid.Row="1"
                      Height="40"
                      FontSize="25"
-                     Margin="0,0,20,0">
+                     Margin="0,0,20,0"
+                     VerticalContentAlignment="Center">
                 <TextBox.Style>
                     <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                         <Style.Resources>
                             <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                                 <VisualBrush.Visual>
-                                    <Label Content="Логин" Foreground="LightGray" FontSize="20"/>
+                                    <Label Content="Логин" Foreground="Gray" FontSize="20"/>
                                 </VisualBrush.Visual>
                             </VisualBrush>
                         </Style.Resources>
@@ -53,39 +58,28 @@
                             <Trigger Property="Text" Value="{x:Null}">
                                 <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
                             </Trigger>
-                            <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter Property="Background" Value="White" />
-                            </Trigger>
                         </Style.Triggers>
                     </Style>
                 </TextBox.Style>
             </TextBox>
-            <TextBox x:Name="TbPassword"
-                     Grid.Row="2"
-                     Height="40"
-                     FontSize="25"
-                     Margin="0,0,20,0">
-                <TextBox.Style>
-                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                        <Style.Resources>
-                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                                <VisualBrush.Visual>
-                                    <Label Content="Пароль" Foreground="LightGray" FontSize="20"/>
-                                </VisualBrush.Visual>
-                            </VisualBrush>
-                        </Style.Resources>
-                        <Style.Triggers>
-                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                            </Trigger>
-                            <Trigger Property="Text" Value="{x:Null}">
-                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                            </Trigger>
-                            
-                        </Style.Triggers>
-                    </Style>
-                </TextBox.Style>
-            </TextBox>
+            <Border Grid.Row="2"
+                    Background="White"
+                    Height="40"
+                    Margin="0,0,20,0"/>
+            <PasswordBox x:Name="TbPassword"
+                         Grid.Row="2"
+                         Height="40"
+                         FontSize="25"
+                         Margin="0,0,20,0"
+                         PasswordChanged="TbPassword_PasswordChanged"
+                         VerticalContentAlignment="Center"/>
+            <Label Content="Пароль"
+                   x:Name="lbPassword"
+                   Grid.Row="2"
+                   FontSize="20"
+                   IsHitTestVisible="False"
+                   Foreground="Gray"
+                   VerticalAlignment="Center"/>
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

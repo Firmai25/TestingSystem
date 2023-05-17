@@ -1,0 +1,90 @@
+﻿<Page x:Class="TestingSystem.Pages.Teachers.AdministratorsPage.AllUsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TestingSystem.Pages.Teachers.AdministratorsPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AllUsersPage">
+
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="lvUser">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="600"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock  FontSize="30">
+                                <Run Text="Фамилия:"/>
+                                <Run Text="{Binding Surname}"/>
+                            </TextBlock>
+                            <TextBlock FontSize="30">
+                                <Run Text="Имя:"/>
+                                <Run Text="{Binding Name}"/>
+                            </TextBlock>
+                            <TextBlock FontSize="30">
+                                <Run Text="Отчество:"/>
+                                <Run Text="{Binding Patronymic}"/>
+                            </TextBlock>
+                            <TextBlock FontSize="30">
+                                <Run Text="Логин:"/>
+                                <Run Text="{Binding Login}"/>
+                            </TextBlock>
+                            <TextBlock FontSize="30">
+                                <Run Text="Пароль:"/>
+                                <Run Text="{Binding Password}"/>
+                            </TextBlock>
+                            <TextBlock FontSize="30">
+                                <Run Text="Тип пользователя:"/>
+                                <Run Text="{Binding Type_Teacher.Name}"/>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <StackPanel.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="FontSize" Value="20"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Button Content="Изменить"
+                                    Margin="0,20,0,0"
+                                    Width="120"
+                                    Background="White"
+                                    Click="EditUser_Click"/>
+                            <Button Content="Удалить"
+                                    Margin="0,20,0,20"
+                                    Background="White"
+                                    Click="DeleteUsers_Click"/>
+
+                        </StackPanel>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="btnBack"
+                Content="Ввернуться"
+                Grid.Row="1"
+                Click="Back_Click"
+                Background="White"
+                FontSize="35"/>
+    </Grid>
+</Page>

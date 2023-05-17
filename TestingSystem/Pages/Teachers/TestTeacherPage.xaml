@@ -7,6 +7,15 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TestTeacherPage">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -30,16 +39,23 @@
                             </TextBlock>
                             <TextBlock FontSize="20">
                                 <Run Text="Дата и время создания:"/>
+                                <Run Text="{Binding DateCreate}"/>
                             </TextBlock>
                             <TextBlock FontSize="20">
                                 <Run Text="Дата и время изменения:"/>
+                                <Run Text="{Binding DateEdit}"/>
                             </TextBlock>
                         </StackPanel>
                         
                         <StackPanel Grid.Column="1">
+                            <StackPanel.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="FontSize" Value="20"/>
+                                </Style>
+                            </StackPanel.Resources>
                             <Button Content="Посмотреть баллы"
                                     Margin="0,20,0,0"
-                                    Width="120"
+                                    Width="220"
                                     Background="White"
                                     Click="ViewPoints_Click"/>
                             <Button Content="Изменить"
@@ -61,6 +77,7 @@
                 Content="Ввернуться"
                 Grid.Row="1"
                 Click="Back_Click"
-                Background="White"/>
+                Background="White"
+                FontSize="35"/>
     </Grid>
 </Page>

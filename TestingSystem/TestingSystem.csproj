@@ -67,54 +67,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Entities\Question_Answer.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Students\PassTestPage.xaml.cs">
-      <DependentUpon>PassTestPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Students\QuestionPage\MultipleAnswersQuestionPage.xaml.cs">
-      <DependentUpon>MultipleAnswersQuestionPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Students\QuestionPage\OneAnswerQuestonPage.xaml.cs">
-      <DependentUpon>OneAnswerQuestonPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Teachers\CreateQuestionPage.xaml.cs">
-      <DependentUpon>CreateQuestionPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Teachers\InfoTestPage.xaml.cs">
-      <DependentUpon>InfoTestPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.xaml.cs">
-      <DependentUpon>MultipleAnswersQuestionPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Teachers\QuestionPage\OneAnswerQuestonPage.xaml.cs">
-      <DependentUpon>OneAnswerQuestonPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Teachers\ScoresPassedTestPage.xaml.cs">
-      <DependentUpon>ScoresPassedTestPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Teachers\TestTeacherPage.xaml.cs">
-      <DependentUpon>TestTeacherPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\InfoUserWindow.xaml.cs">
-      <DependentUpon>InfoUserWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\ParametrsTestWindow.xaml.cs">
-      <DependentUpon>ParametrsTestWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\SelectQuestionWindow.xaml.cs">
-      <DependentUpon>SelectQuestionWindow.xaml</DependentUpon>
-    </Compile>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Classes\DataClass.cs" />
     <Compile Include="Entities\Answer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -142,6 +94,9 @@
     <Compile Include="Entities\Question.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Question_Answer.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Rating.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -154,6 +109,63 @@
     <Compile Include="Entities\Type_question.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Type_Teacher.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Students\PassTestPage.xaml.cs">
+      <DependentUpon>PassTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Students\QuestionPage\MultipleAnswersQuestionPage.xaml.cs">
+      <DependentUpon>MultipleAnswersQuestionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Students\QuestionPage\OneAnswerQuestonPage.xaml.cs">
+      <DependentUpon>OneAnswerQuestonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Teachers\AdministratorsPage\AllUsersPage.xaml.cs">
+      <DependentUpon>AllUsersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Teachers\AdministratorsPage\SelectActionAdministrator.xaml.cs">
+      <DependentUpon>SelectActionAdministrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Teachers\CreateQuestionPage.xaml.cs">
+      <DependentUpon>CreateQuestionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Teachers\InfoTestPage.xaml.cs">
+      <DependentUpon>InfoTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.xaml.cs">
+      <DependentUpon>MultipleAnswersQuestionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Teachers\QuestionPage\OneAnswerQuestonPage.xaml.cs">
+      <DependentUpon>OneAnswerQuestonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Teachers\ScoresPassedTestPage.xaml.cs">
+      <DependentUpon>ScoresPassedTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Teachers\TestTeacherPage.xaml.cs">
+      <DependentUpon>TestTeacherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CreateUserWindows.xaml.cs">
+      <DependentUpon>CreateUserWindows.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\InfoUserWindow.xaml.cs">
+      <DependentUpon>InfoUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ParametrsTestWindow.xaml.cs">
+      <DependentUpon>ParametrsTestWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SelectQuestionWindow.xaml.cs">
+      <DependentUpon>SelectQuestionWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\DataClass.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -179,6 +191,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Students\QuestionPage\OneAnswerQuestonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Teachers\AdministratorsPage\AllUsersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Teachers\AdministratorsPage\SelectActionAdministrator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -215,6 +235,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Teachers\TestTeacherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CreateUserWindows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -285,22 +309,24 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Entities\Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
-    <Content Include="Entities\Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
-    </Content>
     <Resource Include="School.ico" />
     <Resource Include="Pictures\School.ico" />
     <Resource Include="Pictures\Teacher.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
