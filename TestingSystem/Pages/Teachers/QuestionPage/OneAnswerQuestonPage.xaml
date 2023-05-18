@@ -41,6 +41,7 @@
             <Button Content="Добавить новый вариант ответа"
                     Grid.ColumnSpan="3"
                     Grid.Row="10"
+                    FontSize="20"
                     Click="AddAnswer_click"
                     x:Name="BtnAddAnswer"
                     Background="White"/>
