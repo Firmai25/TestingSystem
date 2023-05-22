@@ -274,10 +274,7 @@ namespace TestingSystem.Pages.Teachers
             switch (count)
             {
                 case 0:
-                    message += $"На странице {currentPage + 1} не выбран не один правильный ответ\n";
-                    break;
-                case 1:
-                    message += $"На странице {currentPage + 1} выбран только один ответ\n";
+                    message += $"На странице {currentPage + 1} не выбран правильный ответ\n";
                     break;
             }
             

@@ -52,11 +52,6 @@
                             <Setter Property="Background" 
                                     Value="{StaticResource CueBannerBrush}"/>
                         </Trigger>
-                        <!--<Trigger Property="IsKeyboardFocused" 
-                                 Value="True">
-                            <Setter Property="Background" 
-                                    Value="White" />
-                        </Trigger>-->
                     </Style.Triggers>
                 </Style>
             </TextBox.Style>
@@ -76,7 +71,9 @@
                      AcceptsReturn="True"
                      x:Name="TbDescription"
                      FontSize="20"
-                     Grid.Row="1"/>
+                     Grid.Row="1"
+                     SpellCheck.IsEnabled="True"
+                     Language="ru-ru"/>
             <Grid Grid.Row="2"
                   Margin="0,0,0,20">
                 <Grid.ColumnDefinitions>

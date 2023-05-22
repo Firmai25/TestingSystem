@@ -90,10 +90,12 @@
                                 <Run Text="{Binding Name}"/>
                             </TextBlock>
                             <TextBlock FontSize="25"
-                                       TextTrimming="CharacterEllipsis">
+                                       TextTrimming="CharacterEllipsis"
+                                       TextWrapping="Wrap">
                                 <Run Text="Описание:"/>
                                 <Run Text="{Binding Description}"
-                                     x:Name="rDescription"/>
+                                     x:Name="rDescription"
+                                     />
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
                                         <Style.Triggers>
@@ -116,7 +118,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Content="Ввернуться"
+        <Button Content="Вернуться"
                 Grid.Row="2"
                 FontSize="35"
                 Click="Back_click"/>

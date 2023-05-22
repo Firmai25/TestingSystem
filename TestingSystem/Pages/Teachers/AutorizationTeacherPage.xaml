@@ -89,6 +89,7 @@
                         Margin="20,20,20,20"
                         Content="Авторизоваться"
                         FontSize="20"
+                        Grid.Column="1"
                         Click="Autorization_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
@@ -99,7 +100,6 @@
                 <Button x:Name="BtnBack"
                         Margin="20,20,20,20"
                         Content="Назад"
-                        Grid.Column="1"
                         Click="Back_click"
                         FontSize="20">
                     <Button.Resources>

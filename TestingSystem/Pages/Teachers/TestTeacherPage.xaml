@@ -74,7 +74,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button x:Name="btnBack"
-                Content="Ввернуться"
+                Content="Вернуться"
                 Grid.Row="1"
                 Click="Back_Click"
                 Background="White"

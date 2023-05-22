@@ -203,7 +203,7 @@ namespace TestingSystem.Pages.Students
                     CheckMultiplePage(multipleAnswers);
                 }
             }
-            MessageBox.Show($"Количество баллов {countPoint}");
+            MessageBox.Show($"Тест пройден на {Math.Round(countPoint / listPages.Count * 100)} %");
             Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
             Rating rating = db.Ratings.Where(b=> b.Id == App.dataClass.Rating.Id).FirstOrDefault();
             rating.Scores = countPoint;

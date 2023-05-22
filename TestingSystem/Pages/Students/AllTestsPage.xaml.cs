@@ -26,7 +26,7 @@ namespace TestingSystem.Pages.Students
         {
             InitializeComponent();
             GenerationListTest();
-            cmbFilt.ItemsSource = db.Teachers.ToList();
+            cmbFilt.ItemsSource = db.Teachers.Where(b=> b.Id_Type != 1).ToList();
         }
 
         private void Back_click(object sender, RoutedEventArgs e)

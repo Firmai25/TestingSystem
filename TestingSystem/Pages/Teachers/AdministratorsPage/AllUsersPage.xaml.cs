@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,7 +28,7 @@ namespace TestingSystem.Pages.Teachers.AdministratorsPage
             InitializeComponent();
             Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
             int idTeacher = App.dataClass.Teacher.Id;
-            lvUser.ItemsSource = db.Teachers.Where(b => b.Id != idTeacher).ToList();
+            lvUser.ItemsSource = db.Teachers.Where(b => b.Id != idTeacher && b.Id != 1).ToList();
         }
 
         private void EditUser_Click(object sender, RoutedEventArgs e)
@@ -53,6 +54,11 @@ namespace TestingSystem.Pages.Teachers.AdministratorsPage
                 Button button = sender as Button;
                 Teacher teather = button.DataContext as Teacher;
                 teather = db.Teachers.Where(b => b.Id == teather.Id).FirstOrDefault();
+                var listTest = db.Tests.Where(b => b.id_Teacher == teather.Id).ToList();
+                foreach (var test in listTest)
+                {
+                    test.id_Teacher = 1;
+                }
                 db.Teachers.Remove(teather);
                 db.SaveChanges();
                 int idTeacher = App.dataClass.Teacher.Id;
