@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Repos\TestingSystem\TestingSystem\App.xaml
-22-1116810499
+24-1240003320
 2973112643
-411365037931
+43-740656348
 18416570709
-MainWindow.xaml;Pages\SelectActions.xaml;Pages\Students\AllTestsPage.xaml;Pages\Students\InfoTestPage.xaml;Pages\Students\PassTestPage.xaml;Pages\Students\QuestionPage\MultipleAnswersQuestionPage.xaml;Pages\Students\QuestionPage\OneAnswerQuestonPage.xaml;Pages\Teachers\AdministratorsPage\AllUsersPage.xaml;Pages\Teachers\AdministratorsPage\SelectActionAdministrator.xaml;Pages\Teachers\AutorizationTeacherPage.xaml;Pages\Teachers\CreateQuestionPage.xaml;Pages\Teachers\CreateTestPage.xaml;Pages\Teachers\InfoTestPage.xaml;Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.xaml;Pages\Teachers\QuestionPage\OneAnswerQuestonPage.xaml;Pages\Teachers\ScoresPassedTestPage.xaml;Pages\Teachers\SelectiActionTeacher.xaml;Pages\Teachers\TestTeacherPage.xaml;Windows\CreateUserWindows.xaml;Windows\InfoUserWindow.xaml;Windows\ParametrsTestWindow.xaml;Windows\SelectQuestionWindow.xaml;
+MainWindow.xaml;Pages\SelectActions.xaml;Pages\Students\AllTestsPage.xaml;Pages\Students\InfoTestPage.xaml;Pages\Students\PassTestPage.xaml;Pages\Students\QuestionPage\MultipleAnswersQuestionPage.xaml;Pages\Students\QuestionPage\OneAnswerQuestonPage.xaml;Pages\Teachers\AdministratorsPage\AllTestsAdminPage.xaml;Pages\Teachers\AdministratorsPage\AllUsersPage.xaml;Pages\Teachers\AdministratorsPage\SelectActionAdministrator.xaml;Pages\Teachers\AdministratorsPage\SelectActionUsersPage.xaml;Pages\Teachers\AutorizationTeacherPage.xaml;Pages\Teachers\CreateQuestionPage.xaml;Pages\Teachers\CreateTestPage.xaml;Pages\Teachers\InfoTestPage.xaml;Pages\Teachers\QuestionPage\MultipleAnswersQuestionPage.xaml;Pages\Teachers\QuestionPage\OneAnswerQuestonPage.xaml;Pages\Teachers\ScoresPassedTestPage.xaml;Pages\Teachers\SelectiActionTeacher.xaml;Pages\Teachers\TestTeacherPage.xaml;Windows\CreateUserWindows.xaml;Windows\InfoUserWindow.xaml;Windows\ParametrsTestWindow.xaml;Windows\SelectQuestionWindow.xaml;
 
 True
 

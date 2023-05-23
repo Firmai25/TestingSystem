@@ -18,7 +18,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Image Source="/Pictures/Teacher.png"
+        <Image Source="/Pictures/Key.png"
                Margin="20,0,20,0"/>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>

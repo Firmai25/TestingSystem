@@ -14,19 +14,19 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TestingSystem.Entities;
 
-namespace TestingSystem.Pages.Students
+namespace TestingSystem.Pages.Teachers.AdministratorsPage
 {
     /// <summary>
-    /// Логика взаимодействия для AllTestsPage.xaml
+    /// Логика взаимодействия для AllTestsAdminPage.xaml
     /// </summary>
-    public partial class AllTestsPage : Page
+    public partial class AllTestsAdminPage : Page
     {
         Cherepanov_TestingEntities db = new Cherepanov_TestingEntities();
-        public AllTestsPage()
+        public AllTestsAdminPage()
         {
             InitializeComponent();
             GenerationListTest();
-            cmbFilt.ItemsSource = db.Teachers.Where(b=> b.Id_Type != 1).ToList();
+            cmbFilt.ItemsSource = db.Teachers.Where(b => b.Id_Type != 1).ToList();
         }
 
         private void Back_click(object sender, RoutedEventArgs e)
@@ -34,18 +34,10 @@ namespace TestingSystem.Pages.Students
             App.dataClass.Window.BackPage();
         }
 
-        private void lvAllTests_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (lvAllTests.SelectedIndex != -1)
-            {
-                Test test = lvAllTests.SelectedItem as Test;
-                App.dataClass.Window.NextPage(new InfoTestPage(test));
-            }
-        }
 
         public void GenerationListTest()
         {
-            List<Test> testList = db.Tests.Where(b=> b.VisibleTest == true).ToList();
+            List<Test> testList = db.Tests.Where(b => b.VisibleTest == true).ToList();
             testList = FiltTest(testList);
             testList = SearchTest(testList);
             lvAllTests.ItemsSource = testList;
@@ -67,7 +59,7 @@ namespace TestingSystem.Pages.Students
         {
             if (tbSearch.Text != "")
             {
-                listTest = listTest.Where(b=> b.Name.StartsWith(tbSearch.Text)).ToList();
+                listTest = listTest.Where(b => b.Name.StartsWith(tbSearch.Text)).ToList();
             }
             return listTest;
 
@@ -81,6 +73,18 @@ namespace TestingSystem.Pages.Students
         private void cmbFilt_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             GenerationListTest();
+        }
+
+        private void MenuItemDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (lvAllTests.SelectedIndex != -1)
+            {
+                Test test = lvAllTests.SelectedItem as Test;
+                db.Tests.Remove(test);
+                db.SaveChanges();
+                GenerationListTest();
+                MessageBox.Show("Удаление прошло успешно");
+            }
         }
 
         private void ResetFilt_Click(object sender, RoutedEventArgs e)

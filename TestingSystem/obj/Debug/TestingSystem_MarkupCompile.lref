@@ -22,4 +22,6 @@ FE:\Repos\TestingSystem\TestingSystem\Windows\CreateUserWindows.xaml;;
 FE:\Repos\TestingSystem\TestingSystem\Windows\InfoUserWindow.xaml;;
 FE:\Repos\TestingSystem\TestingSystem\Windows\ParametrsTestWindow.xaml;;
 FE:\Repos\TestingSystem\TestingSystem\Windows\SelectQuestionWindow.xaml;;
+FE:\Repos\TestingSystem\TestingSystem\Pages\Teachers\AdministratorsPage\AllTestsAdminPage.xaml;;
+FE:\Repos\TestingSystem\TestingSystem\Pages\Teachers\AdministratorsPage\SelectActionUsersPage.xaml;;
 

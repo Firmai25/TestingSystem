@@ -32,14 +32,14 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Content="Создать нового пользователя"
+        <Button Content="Работа с пользователями"
                 Grid.Column="1"
                 Click="CreateUsers_Click"/>
-        <Button Content="Список пользователей"
+        <Button Content="Список тестов"
                 Grid.Column="1"
                 Grid.Row="1"
                 Click="AllUsers_Click"/>
-        <Button Content="Ввернуться"
+        <Button Content="Вернуться"
                 Grid.Column="1"
                 Grid.Row="2"
                 Click="Back_click"/>

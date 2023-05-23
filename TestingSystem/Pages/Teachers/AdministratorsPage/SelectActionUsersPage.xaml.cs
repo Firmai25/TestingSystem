@@ -16,18 +16,20 @@ using System.Windows.Shapes;
 namespace TestingSystem.Pages.Teachers.AdministratorsPage
 {
     /// <summary>
-    /// Логика взаимодействия для SelectActionAdministrator.xaml
+    /// Логика взаимодействия для SelectActionUsersPage.xaml
     /// </summary>
-    public partial class SelectActionAdministrator : Page
+    public partial class SelectActionUsersPage : Page
     {
-        public SelectActionAdministrator()
+        public SelectActionUsersPage()
         {
             InitializeComponent();
         }
 
         private void CreateUsers_Click(object sender, RoutedEventArgs e)
         {
-            App.dataClass.Window.NextPage(new SelectActionUsersPage());
+            Windows.CreateUserWindows createUser = new Windows.CreateUserWindows();
+            createUser.Owner = App.dataClass.Window;
+            createUser.ShowDialog();
         }
 
         private void Back_click(object sender, RoutedEventArgs e)
@@ -37,7 +39,7 @@ namespace TestingSystem.Pages.Teachers.AdministratorsPage
 
         private void AllUsers_Click(object sender, RoutedEventArgs e)
         {
-            App.dataClass.Window.NextPage(new AllTestsAdminPage());
+            App.dataClass.Window.NextPage(new AllUsersPage());
         }
     }
 }

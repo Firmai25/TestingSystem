@@ -63,3 +63,7 @@ E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AdministratorsPage
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AdministratorsPage\AllUsersPage.baml
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\CreateUserWindows.g.cs
 E:\Repos\TestingSystem\TestingSystem\obj\Debug\Windows\CreateUserWindows.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AdministratorsPage\AllTestsAdminPage.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AdministratorsPage\SelectActionUsersPage.g.cs
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AdministratorsPage\AllTestsAdminPage.baml
+E:\Repos\TestingSystem\TestingSystem\obj\Debug\Pages\Teachers\AdministratorsPage\SelectActionUsersPage.baml
