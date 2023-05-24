@@ -62,7 +62,7 @@ namespace TestingSystem.Pages.Teachers.AdministratorsPage
                 db.Teachers.Remove(teather);
                 db.SaveChanges();
                 int idTeacher = App.dataClass.Teacher.Id;
-                lvUser.ItemsSource = db.Teachers.Where(b => b.Id != idTeacher).ToList();
+                lvUser.ItemsSource = db.Teachers.Where(b => b.Id != idTeacher && b.Id != 1).ToList();
             }
         }
 

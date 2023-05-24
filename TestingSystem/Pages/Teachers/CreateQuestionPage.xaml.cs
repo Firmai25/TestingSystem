@@ -105,11 +105,11 @@ namespace TestingSystem.Pages.Teachers
         {
             if (currentPage > 0)
             {
-                countTransitions++;
                 currentPage--;
                 frameQuestion.Navigate(listPages[currentPage]);
                 TbCurrentPage.Text = (currentPage + 1).ToString();
                 TbCountPage.Text = listPages.Count.ToString();
+                countTransitions++;
             }
         }
 
@@ -386,7 +386,6 @@ namespace TestingSystem.Pages.Teachers
                     window.ShowDialog();
                     if (window.type != null)
                     {
-                        countTransitions++;
                         listPages.RemoveAt(currentPage);
                         switch (window.type)
                         {
@@ -403,6 +402,7 @@ namespace TestingSystem.Pages.Teachers
                                 TbCountPage.Text = listPages.Count.ToString();
                                 break;
                         }
+                        countTransitions++;
 
                     }
                 }
@@ -426,11 +426,19 @@ namespace TestingSystem.Pages.Teachers
                              MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                for (int i = 0; i < countTransitions + 1; i++)
+                try
                 {
-                    App.dataClass.Window.MainFrame.RemoveBackEntry();
+                    for (int i = 0; i < countTransitions + 1; i++)
+                    {
+                        App.dataClass.Window.MainFrame.RemoveBackEntry();
+                    }
+                    App.dataClass.Window.BackPage();
                 }
-                App.dataClass.Window.BackPage();
+                catch
+                {
+                    App.dataClass.Window.NextPage(new SelectActions());
+                }
+                
             }
         }
     }

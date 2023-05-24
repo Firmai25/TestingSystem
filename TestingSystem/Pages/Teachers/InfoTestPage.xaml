@@ -84,7 +84,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Ввернуться"
+                <Button Content="Отмена"
                         FontSize="30"
                         Margin="20,0,20,0"
                         Grid.Column="0"
